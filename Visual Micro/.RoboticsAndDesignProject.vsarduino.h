@@ -11,6 +11,7 @@
 #ifndef _VSARDUINO_H_
 #define _VSARDUINO_H_
 #define __AVR_ATmega2560__
+#define _VMDEBUG 1
 #define ARDUINO 105
 #define ARDUINO_MAIN
 #define __AVR__
@@ -91,15 +92,15 @@ boolean scosso();
 
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\arduino.h"
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega\pins_arduino.h" 
-#include "C:\Users\Marco\Documents\Arduino\Robot\Robot.ino"
-#include "C:\Users\Marco\Documents\Arduino\Robot\FasiIniziali.ino"
-#include "C:\Users\Marco\Documents\Arduino\Robot\GestioneAzioni.ino"
-#include "C:\Users\Marco\Documents\Arduino\Robot\Inizializzazioni.ino"
-#include "C:\Users\Marco\Documents\Arduino\Robot\ModalitaAudio.ino"
-#include "C:\Users\Marco\Documents\Arduino\Robot\ModalitaMemory.ino"
-#include "C:\Users\Marco\Documents\Arduino\Robot\ModalitaMemoryRandom.ino"
-#include "C:\Users\Marco\Documents\Arduino\Robot\ModalitaPartita.ino"
-#include "C:\Users\Marco\Documents\Arduino\Robot\ModalitaPassami.ino"
-#include "C:\Users\Marco\Documents\Arduino\Robot\ModalitaSpeed.ino"
-#include "C:\Users\Marco\Documents\Arduino\Robot\lettureInput.ino"
+#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\RoboticsAndDesignProject.ino"
+#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\FasiIniziali.ino"
+#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\GestioneAzioni.ino"
+#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\Inizializzazioni.ino"
+#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\ModalitaAudio.ino"
+#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\ModalitaMemory.ino"
+#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\ModalitaMemoryRandom.ino"
+#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\ModalitaPartita.ino"
+#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\ModalitaPassami.ino"
+#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\ModalitaSpeed.ino"
+#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\lettureInput.ino"
 #endif

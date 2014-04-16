@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Robot.ino" />
+    <None Include="RoboticsAndDesignProject.ino" />
     <None Include="FasiIniziali.ino" />
     <None Include="GestioneAzioni.ino" />
     <None Include="Inizializzazioni.ino" />
@@ -28,7 +28,7 @@
     <None Include="lettureInput.ino" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Visual Micro\.Robot.vsarduino.h">
+    <ClInclude Include="Visual Micro\.RoboticsAndDesignProject.vsarduino.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>

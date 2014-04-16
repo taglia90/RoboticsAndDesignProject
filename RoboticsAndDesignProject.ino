@@ -4,7 +4,6 @@
 #include <SFEMP3Shield.h>
 #include <AcceleroMMA7361.h>
 
-
 AcceleroMMA7361 accelero;
 
 // Below is not needed if interrupt driven. Safe to remove if not using.
@@ -15,20 +14,22 @@ AcceleroMMA7361 accelero;
 #endif
 
 /**
-* \brief Object instancing the SdFat library.
-*
-* principal object for handling all SdCard functions.
-*/
+ * \brief Object instancing the SdFat library.
+ *
+ * principal object for handling all SdCard functions.
+ */
 SdFat sd;
 
 /**
-* \brief Object instancing the SFEMP3Shield library.
-*
-* principal object for handling all the attributes, members and functions for the library.
-*/
+ * \brief Object instancing the SFEMP3Shield library.
+ *
+ * principal object for handling all the attributes, members and functions for the library.
+ */
 uint16_t playspeed;
 SFEMP3Shield MP3player;
 //int playspeed=255;
+
+int altoVentola;
 const int audioVerde = 101;
 const int audioRosso = 102;
 const int audioBlu = 103;
@@ -91,16 +92,16 @@ const int bottone4 = 37;
 
 //led rgb sbaaaaaaaaam
 const int ledRossoGrande1 = 38;
-const int ledBluGrande1 = 39;
-const int ledVerdeGrande1 = 40;
+const int ledBluGrande1 = 40;
+const int ledVerdeGrande1 = 39;
 
 //bottone rgb sbaaaaam
 const int bottoneGrande = 41;
 
 //led rgb maniglia
 const int ledRossoManiglia = 42;
-const int ledBluManiglia = 43;
-const int ledVerdeManiglia = 44;
+const int ledBluManiglia = 44;
+const int ledVerdeManiglia = 43;
 
 //bottone rgb maniglia
 const int bottoneManiglia = 45;
@@ -108,7 +109,7 @@ const int bottoneManiglia = 45;
 
 
 const int ledPunteggio[6] = {
-	16, 17, 18, 19, 20, 21 };
+	21, 20, 19, 18, 17, 16 };
 
 
 
@@ -118,7 +119,7 @@ const int pinVentolaOut = A13;
 const int pinVentolaIn = A12;
 const int pinVibrazione = A11;
 int intensitaVentola;
-int limiteVelocitaVentola = 30;
+int limiteVelocitaVentola = 4;
 
 int bottonePremuto1;
 int bottonePremuto2;
@@ -149,7 +150,7 @@ int accelerazioneParziale = 0;
 float inizioAccelerazione;
 int accelerazioneIstantanea;
 int vecchiaAccelerazioneIstantanea;
-int limiteAccelerazione = 2500;
+int limiteAccelerazione = 13000;
 int timeOutAzione = 4000;
 
 float inizioAzione;
@@ -182,6 +183,8 @@ int posizioneAzione = 0;
 
 void setup() {
 
+
+
 	fermaVibrazione();
 	Serial.begin(9600);
 
@@ -193,7 +196,7 @@ void setup() {
 	inizializzaAccelerometro();
 
 
-	playTrack(audioStart);
+
 	delay(2000);
 	//mi metto in attesa che i giocatori schiaccino i tasti colorati
 	avviaSceltaGiocatori();
@@ -206,6 +209,7 @@ void loop() {
 	//se non sono piu' in partita resetto modalita scelta a 0 (se viene premuto push ho in memoria la precedente)
 	if (!inPartita&&modalitaScelta != 0)
 	{
+
 		modalitaScelta = 0;
 
 		//resetto il timeOutAzione nel  caso fosse stato modificato dalla modalita' Speed o dalla modalita' audio
@@ -226,7 +230,7 @@ void loop() {
 	}
 
 
-	//se non è la prima mossa guardo se il tempo è scaduto
+	//se non Ã¨ la prima mossa guardo se il tempo Ã¨ scaduto
 
 
 	if (modalitaScelta == 1)
@@ -280,7 +284,6 @@ void resettaPartita() {
 	playTrack(audioMusica);
 	accendiLedPunteggio();
 	spegniLedPunteggio();
-	playTrack(audioStart);
 	delay(attesaNuovaPartita);
 
 	mosseGiuste = 0;
@@ -289,6 +292,14 @@ void resettaPartita() {
 
 void accendiLedPunteggio()
 {
+	if (modalitaScelta == 3)
+	{
+		mosseGiuste = contaMosse;
+	}
+
+	Serial.println("mosse giuste = ");
+	Serial.println(mosseGiuste);
+
 	for (i = 0; i<6; i++)
 	{
 		if (mosseGiuste>((i + 1) * 3))
@@ -317,6 +328,10 @@ void spegniLedPunteggio()
 
 void playTrack(int track) {
 	//if(!MP3player.isPlaying()) {
+
+
+	MP3player.stopTrack();
+
 	MP3player.playTrack(track);
 	union twobyte mp3_vol; // create key_command existing variable that can be both word and double byte of left and right.
 	mp3_vol.word = MP3player.getVolume(); // returns a double uint8_t of Left and Right packed into int16_t

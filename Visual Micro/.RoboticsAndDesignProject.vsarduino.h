@@ -11,7 +11,6 @@
 #ifndef _VSARDUINO_H_
 #define _VSARDUINO_H_
 #define __AVR_ATmega2560__
-#define _VMDEBUG 1
 #define ARDUINO 105
 #define ARDUINO_MAIN
 #define __AVR__
@@ -53,7 +52,7 @@ void  avviaSceltaModalita();
 void scegliModalita();
 void avviaPartita();
 void pulsantiColorati();
-void impostaColoreBottoni(int ledColore1,int ledColore2, int ledColore3, int ledColore4);
+void impostaColoreBottoni(int ledColore1, int ledColore2, int ledColore3, int ledColore4);
 void ventola();
 void scuoti();
 void controlloAzioni();
@@ -78,6 +77,8 @@ void loopModalitaAudio();
 void loopModalitaMemory();
 void inizializzaArrayMemory();
 void  controlloAzioniModalitaMemory();
+void tempoScadutoMemory();
+void pulsantiColoratiMemory();
 void loopModalitaMemoryRandom();
 void tempoScaduto();
 void loopModalitaPassami();

@@ -11,6 +11,7 @@
 #ifndef _VSARDUINO_H_
 #define _VSARDUINO_H_
 #define __AVR_ATmega2560__
+#define _VMDEBUG 1
 #define ARDUINO 105
 #define ARDUINO_MAIN
 #define __AVR__
@@ -46,6 +47,7 @@ void accendiLedPunteggio();
 void spegniLedPunteggio();
 void playTrack(int track);
 void scegliAzione();
+void tempoScaduto();
 void  avviaSceltaGiocatori();
 void aggiornaSceltaGiocatori();
 void  avviaSceltaModalita();
@@ -55,6 +57,8 @@ void pulsantiColorati();
 void impostaColoreBottoni(int ledColore1, int ledColore2, int ledColore3, int ledColore4);
 void ventola();
 void scuoti();
+void schiaccia();
+void gira();
 void controlloAzioni();
 void resettaAccelerometro();
 void mossaGiustaColorati();
@@ -63,8 +67,6 @@ void mossaGiustaManiglia();
 void mossaGiustaSoffia();
 void mossaGiustaSchiaccia();
 void mossaSbagliata();
-void schiaccia();
-void gira();
 void accendiLedRosso();
 void avviaVibrazione();
 void fermaVibrazione();
@@ -80,14 +82,13 @@ void  controlloAzioniModalitaMemory();
 void tempoScadutoMemory();
 void pulsantiColoratiMemory();
 void loopModalitaMemoryRandom();
-void tempoScaduto();
 void loopModalitaPassami();
 void loopModalitaSpeed();
 void leggiInput();
 void aggiornaAccelerazione();
 boolean bottoniColoratiPremuti();
-boolean BOTTONE_GRANDEPremuto();
-boolean BOTTONE_MANIGLIAPremuto();
+boolean bottoneGrandePremuto();
+boolean bottoneManigliaPremuto();
 boolean ventolaSoffiata();
 boolean scosso();
 
@@ -100,7 +101,6 @@ boolean scosso();
 #include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\ModalitaAudio.ino"
 #include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\ModalitaMemory.ino"
 #include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\ModalitaMemoryRandom.ino"
-#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\ModalitaPartita.ino"
 #include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\ModalitaPassami.ino"
 #include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\ModalitaSpeed.ino"
 #include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\lettureInput.ino"

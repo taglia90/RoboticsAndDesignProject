@@ -243,8 +243,6 @@ void loop() {
 
 }
 
-
-
 void spegniLed() {
 
 	digitalWrite(LED_ROSSO_MANIGLIA, HIGH);
@@ -268,7 +266,6 @@ void spegniLed() {
 	digitalWrite(LED_BLU_1, HIGH);
 	digitalWrite(LED_VERDE_1, HIGH);
 }
-
 
 void resettaPartita() {
 
@@ -348,4 +345,11 @@ void scegliAzione()
 
 }
 
+void tempoScaduto() {
+	if (((millis() - inizioAzione) > timeOutAzione)) {
 
+		Serial.println("tempo scaduto con   ");
+		Serial.print((millis() - inizioAzione));
+		mossaSbagliata();
+	}
+}

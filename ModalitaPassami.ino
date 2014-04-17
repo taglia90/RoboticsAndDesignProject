@@ -1,14 +1,12 @@
 //Modalità multigiocatore Passami!!!!: ogni rand() di azioni bisogna passarlo al giocatore di colore ROSSO/VERDE/BLU
 
-
 int azioniResidue = 0;
 int giocatore = 0;
 int vecchioGiocatore;
 
 void loopModalitaPassami()
 {
-
-
+	Serial.println("Entro in passamiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
 	// se non è ancora stata fatta un'azione
 	if (!azioneFatta)
 	{
@@ -18,13 +16,6 @@ void loopModalitaPassami()
 		//controllo gli input
 		controlloAzioni();
 	}
-
-	//se non è la prima mossa guardo se il tempo è scaduto
-
-
-
-
-
 
 
 	//se non è la prima mossa guardo se il tempo è scaduto
@@ -41,7 +32,6 @@ void loopModalitaPassami()
 
 
 	if (azioneFatta && inPartita) {
-
 
 		azioneFatta = false;
 		scegliAzione();
@@ -64,7 +54,6 @@ void loopModalitaPassami()
 			if (azioniResidue == 0)
 			{
 
-
 				azioniResidue = 3 + random(6);
 
 				vecchioGiocatore = giocatore;
@@ -74,8 +63,6 @@ void loopModalitaPassami()
 				Serial.println("ho esattamente    giocatore   ");
 				Serial.println(giocatoriInPartita);
 
-
-
 				while (vecchioGiocatore == giocatore)
 				{
 					giocatore = random(giocatoriInPartita);
@@ -83,8 +70,6 @@ void loopModalitaPassami()
 
 				Serial.println("giocatore   dopo ");
 				Serial.println(giocatore);
-
-
 
 
 				switch (coloreGiocatori[giocatore]){
@@ -114,7 +99,6 @@ void loopModalitaPassami()
 
 				delay(timeOutAzione / 2);
 			}
-
 
 			switch (azioneDaEseguire) {
 				azioniResidue--;

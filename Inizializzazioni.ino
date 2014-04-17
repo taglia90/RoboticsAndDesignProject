@@ -6,7 +6,6 @@ void inizializzaVentola()
 	altoVentola = digitalRead(PIN_VENTOLA_IN);
 }
 
-
 void inizializzaMp3Shield()
 {
 	//Initialize the SdCard.
@@ -22,7 +21,6 @@ void inizializzaMp3Shield()
 
 
 }
-
 
 void inizializzaAccelerometro()
 {
@@ -90,8 +88,6 @@ void inizializzaLed() {
 	digitalWrite(LED_VERDE_GRANDE_1, HIGH);
 
 }
-
-
 
 void inizializzaBottoni() {
 	pinMode(BOTTONE_1, INPUT);

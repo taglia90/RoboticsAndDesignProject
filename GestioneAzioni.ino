@@ -283,6 +283,21 @@ void scuoti() {
 	playTrack(AUDIO_SCUOTI);
 }
 
+void schiaccia() {
+
+	digitalWrite(LED_BLU_GRANDE_1, LOW);
+
+	playTrack(AUDIO_SCHIACCIA);
+}
+
+void gira(){
+	digitalWrite(LED_BLU_MANIGLIA, LOW);
+
+	playTrack(AUDIO_GIRA);
+
+}
+
+
 void controlloAzioni() {
 	switch (azioneDaEseguire) {
 
@@ -434,7 +449,6 @@ void mossaGiustaColorati() {
 	return;
 }
 
-
 void mossaGiustaScuoti() {
 	playTrack(AUDIO_GIUSTO);
 	spegniLed();
@@ -470,9 +484,6 @@ void mossaGiustaManiglia() {
 	return;
 }
 
-
-
-
 void mossaGiustaSoffia() {
 	playTrack(AUDIO_GIUSTO);
 	spegniLed();
@@ -486,8 +497,6 @@ void mossaGiustaSoffia() {
 
 	return;
 }
-
-
 
 void mossaGiustaSchiaccia() {
 	playTrack(AUDIO_SBAAM);
@@ -512,15 +521,12 @@ void mossaGiustaSchiaccia() {
 	return;
 }
 
-
-
 void mossaSbagliata() {
 	inPartita = false;
 	playTrack(AUDIO_SBAGLIATO);
 	spegniLed();
 	accendiLedRosso();
 	avviaVibrazione();
-	//avviaVibrazione();
 	delay(1000);
 	spegniLed();
 	fermaVibrazione();
@@ -529,21 +535,6 @@ void mossaSbagliata() {
 	resettaPartita();
 
 	return;
-}
-
-
-void schiaccia() {
-
-	digitalWrite(LED_BLU_GRANDE_1, LOW);
-
-	playTrack(AUDIO_SCHIACCIA);
-}
-
-void gira(){
-	digitalWrite(LED_BLU_MANIGLIA, LOW);
-
-	playTrack(AUDIO_GIRA);
-
 }
 
 void accendiLedRosso()

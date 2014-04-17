@@ -1,38 +1,38 @@
-const int timeoutLedGiocatori = 2000;
-const int controlloDoppioClick = 600;
-const int controlloDoppioClickManiglia = 1000;
+const int TIMEOUT_LED_GIOCATORI = 2000;
+const int CONTROLLO_DOPPIO_CLICK = 600;
+const int CONTROLLO_DOPPIO_CLICK_MANIGLIA = 1000;
+const int TIMEOUT_SCELTA_GIOCATORE = 10000;
+const int MODALITA_DI_GIOCO[5] = {
+	1, 2, 3, 4, 5 };
 
-const int timeoutSceltaModalita = 10000;
-float tempoSceltaBottoni[4] = {
-	0, 0, 0, 0 };
 boolean giocatoriSelezionati[4] = {
 	false, false, false, false };
 boolean vecchioBottoniSelezionati[4] = {
 	false, false, false, false };
+float tempoSceltaBottoni[4] = {
+	0, 0, 0, 0 };
 
 float inizioSceltaModalita;
-const int modalitaDiGioco[5] = {
-	1, 2, 3, 4, 5 };
+
 int modalitaTemporanea = 0;
 float tempoSceltaModalita;
 
-
-//faccio partitre l'audio accendo i pulsanti e dopo "timeoutLedGiocatori" li spengo
+//faccio partitre l'audio accendo i pulsanti e dopo "TIMEOUT_LED_GIOCATORI" li spengo
 void  avviaSceltaGiocatori()
 {
 	playTrack(AUDIO_SCEGLI_GIOCATORI);
 	impostaColoreBottoni(VERDE, BLU, GIALLO, ROSSO);
-	delay(timeoutLedGiocatori);
+	delay(TIMEOUT_LED_GIOCATORI);
 	spegniLed();
 }
 
-//ogni volta che un tasto viene premuto lo illumino del colore corrispondente, uso controlloDoppioClick per assicurarmi che non mi arrivino segnali strani
+//ogni volta che un tasto viene premuto lo illumino del colore corrispondente, uso CONTROLLO_DOPPIO_CLICK per assicurarmi che non mi arrivino segnali strani
 //la prima volta che si schiaccia mi salvo la situazione pei pulsanti e infine avvio la scelta della modallita'
 void aggiornaSceltaGiocatori()
 {
 
 
-	if (digitalRead(BOTTONE_1) && ((millis() - tempoSceltaBottoni[0]) > controlloDoppioClick))
+	if (digitalRead(BOTTONE_1) && ((millis() - tempoSceltaBottoni[0]) > CONTROLLO_DOPPIO_CLICK))
 	{
 
 		// Serial.println();
@@ -49,14 +49,14 @@ void aggiornaSceltaGiocatori()
 		digitalWrite(LED_VERDE_1, !digitalRead(LED_VERDE_1));
 		//  delay(400);
 	}
-	if (!digitalRead(BOTTONE_2) && ((millis() - tempoSceltaBottoni[1]) > controlloDoppioClick))
+	if (!digitalRead(BOTTONE_2) && ((millis() - tempoSceltaBottoni[1]) > CONTROLLO_DOPPIO_CLICK))
 	{
 		giocatoriSelezionati[1] = !giocatoriSelezionati[1];
 		tempoSceltaBottoni[1] = millis();
 		digitalWrite(LED_BLU_2, !digitalRead(LED_BLU_2));
 		//  delay(400);
 	}
-	if (digitalRead(BOTTONE_3) && ((millis() - tempoSceltaBottoni[2]) > controlloDoppioClick))
+	if (digitalRead(BOTTONE_3) && ((millis() - tempoSceltaBottoni[2]) > CONTROLLO_DOPPIO_CLICK))
 	{
 		giocatoriSelezionati[2] = !giocatoriSelezionati[2];
 		tempoSceltaBottoni[2] = millis();
@@ -64,7 +64,7 @@ void aggiornaSceltaGiocatori()
 		digitalWrite(LED_ROSSO_3, !digitalRead(LED_ROSSO_3));
 		//    delay(400);
 	}
-	if (!digitalRead(BOTTONE_4) && ((millis() - tempoSceltaBottoni[3]) > controlloDoppioClick))
+	if (!digitalRead(BOTTONE_4) && ((millis() - tempoSceltaBottoni[3]) > CONTROLLO_DOPPIO_CLICK))
 	{
 		giocatoriSelezionati[3] = !giocatoriSelezionati[3];
 		tempoSceltaBottoni[3] = millis();
@@ -119,17 +119,17 @@ void  avviaSceltaModalita()
 
 }
 
-//se e passato piu' di "timeoutSceltaModalita" ripeto l'audio, se no mi metto in ascolto dei segnali sulla mangilia, quando si preme push salvo la modalita scelta e avvio la partita
+//se e passato piu' di "TIMEOUT_SCELTA_GIOCATORE" ripeto l'audio, se no mi metto in ascolto dei segnali sulla mangilia, quando si preme push salvo la modalita scelta e avvio la partita
 void scegliModalita()
 {
-	if ((millis() - inizioSceltaModalita) > timeoutSceltaModalita)
+	if ((millis() - inizioSceltaModalita) > TIMEOUT_SCELTA_GIOCATORE)
 	{
 		avviaSceltaModalita();
 	}
 
 
 
-	if (digitalRead(BOTTONE_MANIGLIA) && ((millis() - tempoSceltaModalita) > controlloDoppioClickManiglia))
+	if (digitalRead(BOTTONE_MANIGLIA) && ((millis() - tempoSceltaModalita) > CONTROLLO_DOPPIO_CLICK_MANIGLIA))
 	{
 		tempoSceltaModalita = millis();
 		inizioSceltaModalita = millis();

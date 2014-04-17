@@ -40,8 +40,6 @@ void loopModalitaSpeed()
 			if (timeOutAzione < 2000)
 			{
 				MP3player.setPlaySpeed(2);
-
-
 			}
 
 		}

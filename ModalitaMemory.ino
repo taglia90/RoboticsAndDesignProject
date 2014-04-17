@@ -1,9 +1,5 @@
-
-
-
 //Modalità memory: Compiere diverse azioni una dopo l’altra senza che la voce le ripeta.
 //Le azione sono del tipo 1 12 123 1234….
-
 
 float timeOutAzioneMemory;
 
@@ -148,7 +144,6 @@ void loopModalitaMemory()
 
 }
 
-
 void inizializzaArrayMemory(){
 	for (j = 0; j < 100; j++){
 		for (k = 0; k < 3; k++){
@@ -156,9 +151,6 @@ void inizializzaArrayMemory(){
 		}
 	}
 }
-
-
-
 
 void  controlloAzioniModalitaMemory()
 {
@@ -283,7 +275,6 @@ void  controlloAzioniModalitaMemory()
 	}
 
 }
-
 
 void tempoScadutoMemory()
 {

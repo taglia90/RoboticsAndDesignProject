@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 void loopModalitaMemoryRandom()
 {
 

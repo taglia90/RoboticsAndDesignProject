@@ -1,4 +1,3 @@
-
 float tempoVentolaSoffiata = 0;
 float timeOldCycle;
 
@@ -39,7 +38,6 @@ void leggiInput()
 
 }
 
-
 void aggiornaAccelerazione() {
 
 
@@ -66,8 +64,6 @@ void aggiornaAccelerazione() {
 	timeOldCycle = millis();
 }
 
-
-
 boolean bottoniColoratiPremuti()
 {
 	if ((bottonePremuto1 + bottonePremuto2 + bottonePremuto3 + bottonePremuto4) == 0)
@@ -77,7 +73,7 @@ boolean bottoniColoratiPremuti()
 	return true;
 }
 
-boolean BOTTONE_GRANDEPremuto()
+boolean bottoneGrandePremuto()
 {
 	if (bottonePremutoGrande == 0)
 	{
@@ -86,7 +82,7 @@ boolean BOTTONE_GRANDEPremuto()
 	return true;
 }
 
-boolean BOTTONE_MANIGLIAPremuto()
+boolean bottoneManigliaPremuto()
 {
 	if (bottonePremutoManiglia == 0)
 	{
@@ -105,7 +101,6 @@ boolean ventolaSoffiata()
 	}
 	return false;
 }
-
 
 boolean scosso()
 {

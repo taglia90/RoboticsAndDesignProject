@@ -86,8 +86,8 @@ void loopModalitaSpeed();
 void leggiInput();
 void aggiornaAccelerazione();
 boolean bottoniColoratiPremuti();
-boolean bottoneGrandePremuto();
-boolean bottoneManigliaPremuto();
+boolean BOTTONE_GRANDEPremuto();
+boolean BOTTONE_MANIGLIAPremuto();
 boolean ventolaSoffiata();
 boolean scosso();
 

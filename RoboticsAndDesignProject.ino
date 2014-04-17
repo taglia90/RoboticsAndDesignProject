@@ -30,97 +30,97 @@ SFEMP3Shield MP3player;
 //int playspeed=255;
 
 int altoVentola;
-const int audioVerde = 101;
-const int audioRosso = 102;
-const int audioBlu = 103;
-const int audioGiallo = 112;
-const int audioScuoti = 104;
-const int audioSbaam = 105;
-const int audioSchiaccia = 205;
-const int audioGira = 106;
-const int audioGiusto = 107;
-const int audioSbagliato = 108;
-const int audioMusica = 109;
-const int audioStart = 110;
-const int audioSoffia = 111;
-const int audioScegliGiocatori = 113;
-const int audioScegliModalita = 114;
 
-const int audioModalitaSpeed = 115;
-const int audioModalitaAudio = 116;          //manca
-const int audioModalitaMemory = 117;
-const int audioModalitaMemoryRandom = 118;
-const int audioModalitaPassami = 119;
+//corrispondenze file audio
+const int AUDIO_VERDE = 101;
+const int AUDIO_ROSSO = 102;
+const int AUDIO_BLU = 103;
+const int AUDIO_GIALLO = 112;
+const int AUDIO_SCUOTI = 104;
+const int AUDIO_SBAAM = 105;
+const int AUDIO_SCHIACCIA = 205;
+const int AUDIO_GIRA = 106;
+const int AUDIO_GIUSTO = 107;
+const int AUDIO_SBAGLIATO = 108;
+const int AUDIO_MUSICA = 109;
+const int AUDIO_START = 110;
+const int AUDIO_SOFFIA = 111;
+const int AUDIO_SCEGLI_GIOCATORI = 113;
+const int AUDIO_SCEGLI_MODALITA = 114;
 
-const int audioPassamiAlBlu = 120;
-const int audioPassamiAlGiallo = 121;
-const int audioPassamiAlRosso = 122;
-const int audioPassamiAlVerde = 123;
+const int AUDIO_MODALITA_SPEED = 115;
+const int AUDIO_MODALITA_AUDIO = 116;          //manca
+const int AUDIO_MODALITA_MEMORY = 117;
+const int AUDIO_MODALITA_MEMORY_RANDOM = 118;
+const int AUDIO_MODALITA_PASSAMI = 119;
 
+const int AUDIO_PASSAMI_AL_BLU = 120;
+const int AUDIO_PASSAMI_AL_GIALLO = 121;
+const int AUDIO_PASSAMI_AL_ROSSO = 122;
+const int AUDIO_PASSAMI_AL_VERDE = 123;
 
 //led rgb 1
-const int ledRosso1 = 22;
-const int ledBlu1 = 24;
-const int ledVerde1 = 23;
+const int LED_ROSSO_1 = 22;
+const int LED_BLU_1 = 24;
+const int LED_VERDE_1 = 23;
 
 //bottone rgb 1
-const int bottone1 = 25;
+const int BOTTONE_1 = 25;
 
 //led rgb 2
-const int ledRosso2 = 26;
-const int ledBlu2 = 28;
-const int ledVerde2 = 27;
+const int LED_ROSSO_2 = 26;
+const int LED_BLU_2 = 28;
+const int LED_VERDE_2 = 27;
 
 //bottone rgb 2
-const int bottone2 = 29;
+const int BOTTONE_2 = 29;
 
 //led rgb 3
-const int ledRosso3 = 30;
-const int ledBlu3 = 32;
-const int ledVerde3 = 31;
+const int LED_ROSSO_3 = 30;
+const int LED_BLU_3 = 32;
+const int LED_VERDE_3 = 31;
 
 //bottone rgb 3
-const int bottone3 = 33;
+const int BOTTONE_3 = 33;
 
 //led rgb 4
-const int ledRosso4 = 34;
-const int ledBlu4 = 36;
-const int ledVerde4 = 35;
+const int LED_ROSSO_4 = 34;
+const int LED_BLU_4 = 36;
+const int LED_VERDE_4 = 35;
 
 //bottone rgb 4
-const int bottone4 = 37;
+const int BOTTONE_4 = 37;
 
 //led rgb sbaaaaaaaaam
-const int ledRossoGrande1 = 38;
-const int ledBluGrande1 = 40;
-const int ledVerdeGrande1 = 39;
+const int LED_ROSSO_GRANDE_1 = 38;
+const int LED_BLU_GRANDE_1 = 40;
+const int LED_VERDE_GRANDE_1 = 39;
 
 //bottone rgb sbaaaaam
-const int bottoneGrande = 41;
+const int BOTTONE_GRANDE = 41;
 
 //led rgb maniglia
-const int ledRossoManiglia = 42;
-const int ledBluManiglia = 44;
-const int ledVerdeManiglia = 43;
+const int LED_ROSSO_MANIGLIA = 42;
+const int LED_BLU_MANIGLIA = 44;
+const int LED_VERDE_MANIGLIA = 43;
 
 //bottone rgb maniglia
-const int bottoneManiglia = 45;
+const int BOTTONE_MANIGLIA = 45;
 
 
-
-const int ledPunteggio[6] = {
+//led punteggio
+const int LED_PUNTEGGIO[6] = {
 	21, 20, 19, 18, 17, 16 };
 
 
-
-
-
-const int pinVentolaOut = A13;
-const int pinVentolaIn = A12;
-const int pinVibrazione = A11;
+//ventola
+const int PIN_VENTOLA_OUT = A13;
+const int PIN_VENTOLA_IN = A12;
+const int PIN_VIBRAZIONE = A11;
 int intensitaVentola;
 int limiteVelocitaVentola = 4;
 
+//bottoni premuti
 int bottonePremuto1;
 int bottonePremuto2;
 int bottonePremuto3;
@@ -128,11 +128,10 @@ int bottonePremuto4;
 int bottonePremutoGrande;
 int bottonePremutoManiglia;
 
-
-const int verde = 1;
-const int rosso = 2;
-const int blu = 3;
-const int giallo = 4;
+const int VERDE = 1;
+const int ROSSO = 2;
+const int BLU = 3;
+const int GIALLO = 4;
 
 int buttonState = 0;
 
@@ -162,14 +161,15 @@ boolean primaMossa = true;
 //numero di giocatori in partita, inizialmente a 0
 int giocatoriInPartita = 0;
 
-//vettore in cui una volta scelti i giocatori associo in ordine i colori scelti, dove  verde=1, rosso=2, blu=3, giallo=4
-//esempio con due giocatori di colore giallo e rosso il vettore e' del tipo [4 2 0 0]
+//vettore in cui una volta scelti i giocatori associo in ordine i colori scelti, dove  VERDE=1, ROSSO=2, BLU=3, GIALLO=4
+//esempio con due giocatori di colore GIALLO e ROSSO il vettore e' del tipo [4 2 0 0]
 int coloreGiocatori[4] = {
 	0, 0, 0, 0 };
 
 //variabile a 0 inizialmente oppure assume i valori 1 2 3 4 5 a seconda della modalita
 int modalitaScelta = 0;
 
+//iteratori
 int i;
 int j = 0;
 int k;
@@ -183,8 +183,6 @@ int posizioneAzione = 0;
 
 void setup() {
 
-
-
 	fermaVibrazione();
 	Serial.begin(9600);
 
@@ -194,8 +192,6 @@ void setup() {
 	inizializzaBottoni();
 	inizializzaMp3Shield();
 	inizializzaAccelerometro();
-
-
 
 	delay(2000);
 	//mi metto in attesa che i giocatori schiaccino i tasti colorati
@@ -251,37 +247,35 @@ void loop() {
 
 void spegniLed() {
 
+	digitalWrite(LED_ROSSO_MANIGLIA, HIGH);
+	digitalWrite(LED_BLU_MANIGLIA, HIGH);
+	digitalWrite(LED_VERDE_MANIGLIA, HIGH);
+	digitalWrite(LED_ROSSO_GRANDE_1, HIGH);
+	digitalWrite(LED_BLU_GRANDE_1, HIGH);
+	digitalWrite(LED_VERDE_GRANDE_1, HIGH);
 
-	digitalWrite(ledRossoManiglia, HIGH);
-	digitalWrite(ledBluManiglia, HIGH);
-	digitalWrite(ledVerdeManiglia, HIGH);
-	digitalWrite(ledRossoGrande1, HIGH);
-	digitalWrite(ledBluGrande1, HIGH);
-	digitalWrite(ledVerdeGrande1, HIGH);
+	digitalWrite(LED_ROSSO_4, HIGH);
+	digitalWrite(LED_BLU_4, HIGH);
+	digitalWrite(LED_VERDE_4, HIGH);
 
-	digitalWrite(ledRosso4, HIGH);
-	digitalWrite(ledBlu4, HIGH);
-	digitalWrite(ledVerde4, HIGH);
-
-	digitalWrite(ledRosso3, HIGH);
-	digitalWrite(ledBlu3, HIGH);
-	digitalWrite(ledVerde3, HIGH);
-	digitalWrite(ledRosso2, HIGH);
-	digitalWrite(ledBlu2, HIGH);
-	digitalWrite(ledVerde2, HIGH);
-	digitalWrite(ledRosso1, HIGH);
-	digitalWrite(ledBlu1, HIGH);
-	digitalWrite(ledVerde1, HIGH);
+	digitalWrite(LED_ROSSO_3, HIGH);
+	digitalWrite(LED_BLU_3, HIGH);
+	digitalWrite(LED_VERDE_3, HIGH);
+	digitalWrite(LED_ROSSO_2, HIGH);
+	digitalWrite(LED_BLU_2, HIGH);
+	digitalWrite(LED_VERDE_2, HIGH);
+	digitalWrite(LED_ROSSO_1, HIGH);
+	digitalWrite(LED_BLU_1, HIGH);
+	digitalWrite(LED_VERDE_1, HIGH);
 }
 
 
 void resettaPartita() {
 
-
 	Serial.println("resetto la partita.................");
 	MP3player.setPlaySpeed(0);
 	primaMossa = true;
-	playTrack(audioMusica);
+	playTrack(AUDIO_MUSICA);
 	accendiLedPunteggio();
 	spegniLedPunteggio();
 	delay(attesaNuovaPartita);
@@ -304,27 +298,21 @@ void accendiLedPunteggio()
 	{
 		if (mosseGiuste>((i + 1) * 3))
 		{
-			digitalWrite(ledPunteggio[i], HIGH);
+			digitalWrite(LED_PUNTEGGIO[i], HIGH);
 			delay(1000);
 		}
 	}
 
 }
 
-
-
 void spegniLedPunteggio()
 {
 	for (i = 0; i < 6; i++)
 	{
-		digitalWrite(ledPunteggio[i], LOW);
+		digitalWrite(LED_PUNTEGGIO[i], LOW);
 
 	}
 }
-
-
-
-
 
 void playTrack(int track) {
 	//if(!MP3player.isPlaying()) {
@@ -359,10 +347,5 @@ void scegliAzione()
 	inizioAzione = millis();
 
 }
-
-
-
-
-
 
 

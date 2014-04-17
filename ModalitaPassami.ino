@@ -1,4 +1,4 @@
-//Modalità multigiocatore Passami!!!!: ogni rand() di azioni bisogna passarlo al giocatore di colore rosso/verde/blu
+//Modalità multigiocatore Passami!!!!: ogni rand() di azioni bisogna passarlo al giocatore di colore ROSSO/VERDE/BLU
 
 
 int azioniResidue = 0;
@@ -90,22 +90,22 @@ void loopModalitaPassami()
 				switch (coloreGiocatori[giocatore]){
 				case 0:
 				{
-						  playTrack(audioPassamiAlVerde);
+						  playTrack(AUDIO_PASSAMI_AL_VERDE);
 						  break;
 				}
 				case 1:
 				{
-						  playTrack(audioPassamiAlRosso);
+						  playTrack(AUDIO_PASSAMI_AL_ROSSO);
 						  break;
 				}
 				case 2:
 				{
-						  playTrack(audioPassamiAlBlu);
+						  playTrack(AUDIO_PASSAMI_AL_BLU);
 						  break;
 				}
 				case 3:
 				{
-						  playTrack(audioPassamiAlGiallo);
+						  playTrack(AUDIO_PASSAMI_AL_GIALLO);
 						  break;
 				}
 				default:

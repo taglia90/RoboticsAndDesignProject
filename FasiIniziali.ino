@@ -20,8 +20,8 @@ float tempoSceltaModalita;
 //faccio partitre l'audio accendo i pulsanti e dopo "timeoutLedGiocatori" li spengo
 void  avviaSceltaGiocatori()
 {
-	playTrack(audioScegliGiocatori);
-	impostaColoreBottoni(verde, blu, giallo, rosso);
+	playTrack(AUDIO_SCEGLI_GIOCATORI);
+	impostaColoreBottoni(VERDE, BLU, GIALLO, ROSSO);
 	delay(timeoutLedGiocatori);
 	spegniLed();
 }
@@ -32,7 +32,7 @@ void aggiornaSceltaGiocatori()
 {
 
 
-	if (digitalRead(bottone1) && ((millis() - tempoSceltaBottoni[0]) > controlloDoppioClick))
+	if (digitalRead(BOTTONE_1) && ((millis() - tempoSceltaBottoni[0]) > controlloDoppioClick))
 	{
 
 		// Serial.println();
@@ -46,56 +46,56 @@ void aggiornaSceltaGiocatori()
 
 
 		tempoSceltaBottoni[0] = millis();
-		digitalWrite(ledVerde1, !digitalRead(ledVerde1));
+		digitalWrite(LED_VERDE_1, !digitalRead(LED_VERDE_1));
 		//  delay(400);
 	}
-	if (!digitalRead(bottone2) && ((millis() - tempoSceltaBottoni[1]) > controlloDoppioClick))
+	if (!digitalRead(BOTTONE_2) && ((millis() - tempoSceltaBottoni[1]) > controlloDoppioClick))
 	{
 		giocatoriSelezionati[1] = !giocatoriSelezionati[1];
 		tempoSceltaBottoni[1] = millis();
-		digitalWrite(ledBlu2, !digitalRead(ledBlu2));
+		digitalWrite(LED_BLU_2, !digitalRead(LED_BLU_2));
 		//  delay(400);
 	}
-	if (digitalRead(bottone3) && ((millis() - tempoSceltaBottoni[2]) > controlloDoppioClick))
+	if (digitalRead(BOTTONE_3) && ((millis() - tempoSceltaBottoni[2]) > controlloDoppioClick))
 	{
 		giocatoriSelezionati[2] = !giocatoriSelezionati[2];
 		tempoSceltaBottoni[2] = millis();
-		digitalWrite(ledVerde3, !digitalRead(ledVerde3));
-		digitalWrite(ledRosso3, !digitalRead(ledRosso3));
+		digitalWrite(LED_VERDE_3, !digitalRead(LED_VERDE_3));
+		digitalWrite(LED_ROSSO_3, !digitalRead(LED_ROSSO_3));
 		//    delay(400);
 	}
-	if (!digitalRead(bottone4) && ((millis() - tempoSceltaBottoni[3]) > controlloDoppioClick))
+	if (!digitalRead(BOTTONE_4) && ((millis() - tempoSceltaBottoni[3]) > controlloDoppioClick))
 	{
 		giocatoriSelezionati[3] = !giocatoriSelezionati[3];
 		tempoSceltaBottoni[3] = millis();
-		digitalWrite(ledRosso4, !digitalRead(ledRosso4));
+		digitalWrite(LED_ROSSO_4, !digitalRead(LED_ROSSO_4));
 		// delay(400);
 	}
 
 
-	if (digitalRead(bottoneGrande))
+	if (digitalRead(BOTTONE_GRANDE))
 	{
 		if (giocatoriSelezionati[0])
 		{
-			coloreGiocatori[giocatoriInPartita] = verde;
+			coloreGiocatori[giocatoriInPartita] = VERDE;
 			giocatoriInPartita++;
 
 		}
 		if (giocatoriSelezionati[1])
 		{
-			coloreGiocatori[giocatoriInPartita] = blu;
+			coloreGiocatori[giocatoriInPartita] = BLU;
 			giocatoriInPartita++;
 
 		}
 		if (giocatoriSelezionati[2])
 		{
-			coloreGiocatori[giocatoriInPartita] = giallo;
+			coloreGiocatori[giocatoriInPartita] = GIALLO;
 			giocatoriInPartita++;
 
 		}
 		if (giocatoriSelezionati[3])
 		{
-			coloreGiocatori[giocatoriInPartita] = rosso;
+			coloreGiocatori[giocatoriInPartita] = ROSSO;
 			modalitaScelta++;
 
 		}
@@ -112,7 +112,7 @@ void aggiornaSceltaGiocatori()
 void  avviaSceltaModalita()
 {
 
-	playTrack(audioScegliModalita);
+	playTrack(AUDIO_SCEGLI_MODALITA);
 
 	inizioSceltaModalita = millis();
 	spegniLed();
@@ -129,7 +129,7 @@ void scegliModalita()
 
 
 
-	if (digitalRead(bottoneManiglia) && ((millis() - tempoSceltaModalita) > controlloDoppioClickManiglia))
+	if (digitalRead(BOTTONE_MANIGLIA) && ((millis() - tempoSceltaModalita) > controlloDoppioClickManiglia))
 	{
 		tempoSceltaModalita = millis();
 		inizioSceltaModalita = millis();
@@ -146,31 +146,31 @@ void scegliModalita()
 
 		case 1:
 		{
-				  playTrack(audioModalitaSpeed);
+				  playTrack(AUDIO_MODALITA_SPEED);
 				  break;
 		}
 
 		case 2:
 		{
-				  playTrack(audioModalitaAudio);
+				  playTrack(AUDIO_MODALITA_AUDIO);
 				  break;
 		}
 
 		case 3:
 		{
-				  playTrack(audioModalitaMemory);
+				  playTrack(AUDIO_MODALITA_MEMORY);
 				  break;
 		}
 
 		case 4:
 		{
-				  playTrack(audioModalitaMemoryRandom);
+				  playTrack(AUDIO_MODALITA_MEMORY_RANDOM);
 				  break;
 		}
 
 		case 5:
 		{
-				  playTrack(audioModalitaPassami);
+				  playTrack(AUDIO_MODALITA_PASSAMI);
 				  break;
 		}
 		default:
@@ -185,10 +185,10 @@ void scegliModalita()
 
 	}
 
-	if (digitalRead(bottoneGrande))
+	if (digitalRead(BOTTONE_GRANDE))
 	{
 
-		Serial.println("  if(digitalRead(bottoneGrande))");
+		Serial.println("  if(digitalRead(BOTTONE_GRANDE))");
 		modalitaScelta = modalitaTemporanea;
 		Serial.print("modalitaScelta=         ");
 		Serial.println(modalitaScelta);
@@ -203,7 +203,7 @@ void avviaPartita()
 	{
 		Serial.println("  avvvvvvvvvvviiiiiiiiiiiiiiiooooooooooooooooooooo");
 
-		playTrack(audioStart);
+		playTrack(AUDIO_START);
 	}
 	inPartita = true;
 	primaMossa = true;

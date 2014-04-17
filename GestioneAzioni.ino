@@ -6,11 +6,11 @@ void pulsantiColorati() {
 	coloreDaScegliere = random(4); //scelgo un colore
 	pulsanteDaScegliere = random(4); //scelgo un pulsante
 
-	impostaColoreBottoni(verde, blu, rosso, giallo);
+	impostaColoreBottoni(VERDE, BLU, ROSSO, GIALLO);
 	delay(timeOutAzione / 20);
-	impostaColoreBottoni(giallo, verde, blu, rosso);
+	impostaColoreBottoni(GIALLO, VERDE, BLU, ROSSO);
 	delay(timeOutAzione / 20);
-	impostaColoreBottoni(rosso, giallo, verde, blu);
+	impostaColoreBottoni(ROSSO, GIALLO, VERDE, BLU);
 	delay(timeOutAzione / 20);
 
 	spegniLed();
@@ -22,7 +22,7 @@ void pulsantiColorati() {
 	{
 
 			  if (modalitaScelta != 2)
-				  playTrack(audioVerde);
+				  playTrack(AUDIO_VERDE);
 
 
 			  switch (pulsanteDaScegliere) {
@@ -31,25 +31,25 @@ void pulsantiColorati() {
 			  case 0:
 			  {
 
-						impostaColoreBottoni(verde, blu, rosso, giallo);
+						impostaColoreBottoni(VERDE, BLU, ROSSO, GIALLO);
 
 						break;
 			  }
 			  case 1:
 			  {
-						impostaColoreBottoni(giallo, verde, rosso, blu);
+						impostaColoreBottoni(GIALLO, VERDE, ROSSO, BLU);
 
 						break;
 			  }
 			  case 2:
 			  {
-						impostaColoreBottoni(rosso, giallo, verde, blu);
+						impostaColoreBottoni(ROSSO, GIALLO, VERDE, BLU);
 
 						break;
 			  }
 			  case 3:
 			  {
-						impostaColoreBottoni(rosso, giallo, blu, verde);
+						impostaColoreBottoni(ROSSO, GIALLO, BLU, VERDE);
 
 						break;
 			  }
@@ -64,30 +64,30 @@ void pulsantiColorati() {
 	{
 
 			  if (modalitaScelta != 2)
-				  playTrack(audioBlu);
+				  playTrack(AUDIO_BLU);
 
 			  switch (pulsanteDaScegliere) {
 			  case 0:
 			  {
-						impostaColoreBottoni(blu, giallo, rosso, verde);
+						impostaColoreBottoni(BLU, GIALLO, ROSSO, VERDE);
 
 						break;
 			  }
 			  case 1:
 			  {
-						impostaColoreBottoni(giallo, blu, verde, rosso);
+						impostaColoreBottoni(GIALLO, BLU, VERDE, ROSSO);
 
 						break;
 			  }
 			  case 2:
 			  {
-						impostaColoreBottoni(giallo, rosso, blu, verde);
+						impostaColoreBottoni(GIALLO, ROSSO, BLU, VERDE);
 
 						break;
 			  }
 			  case 3:
 			  {
-						impostaColoreBottoni(rosso, giallo, verde, blu);
+						impostaColoreBottoni(ROSSO, GIALLO, VERDE, BLU);
 
 						break;
 			  }
@@ -101,30 +101,30 @@ void pulsantiColorati() {
 	case 2:
 	{
 			  if (modalitaScelta != 2)
-				  playTrack(audioRosso);
+				  playTrack(AUDIO_ROSSO);
 
 			  switch (pulsanteDaScegliere) {
 			  case 0:
 			  {
-						impostaColoreBottoni(rosso, giallo, verde, blu);
+						impostaColoreBottoni(ROSSO, GIALLO, VERDE, BLU);
 
 						break;
 			  }
 			  case 1:
 			  {
-						impostaColoreBottoni(giallo, rosso, verde, blu);
+						impostaColoreBottoni(GIALLO, ROSSO, VERDE, BLU);
 
 						break;
 			  }
 			  case 2:
 			  {
-						impostaColoreBottoni(giallo, blu, rosso, verde);
+						impostaColoreBottoni(GIALLO, BLU, ROSSO, VERDE);
 
 						break;
 			  }
 			  case 3:
 			  {
-						impostaColoreBottoni(giallo, verde, blu, rosso);
+						impostaColoreBottoni(GIALLO, VERDE, BLU, ROSSO);
 
 						break;
 			  }
@@ -139,30 +139,30 @@ void pulsantiColorati() {
 	case 3:
 	{
 			  if (modalitaScelta != 2)
-				  playTrack(audioGiallo);
+				  playTrack(AUDIO_GIALLO);
 
 			  switch (pulsanteDaScegliere) {
 			  case 0:
 			  {
-						impostaColoreBottoni(giallo, rosso, verde, blu);
+						impostaColoreBottoni(GIALLO, ROSSO, VERDE, BLU);
 
 						break;
 			  }
 			  case 1:
 			  {
-						impostaColoreBottoni(blu, giallo, verde, rosso);
+						impostaColoreBottoni(BLU, GIALLO, VERDE, ROSSO);
 
 						break;
 			  }
 			  case 2:
 			  {
-						impostaColoreBottoni(verde, blu, giallo, rosso);
+						impostaColoreBottoni(VERDE, BLU, GIALLO, ROSSO);
 
 						break;
 			  }
 			  case 3:
 			  {
-						impostaColoreBottoni(verde, blu, rosso, giallo);
+						impostaColoreBottoni(VERDE, BLU, ROSSO, GIALLO);
 
 
 						break;
@@ -186,89 +186,89 @@ void impostaColoreBottoni(int ledColore1, int ledColore2, int ledColore3, int le
 {
 	spegniLed();
 
-	if (ledColore1 == verde)
+	if (ledColore1 == VERDE)
 	{
-		digitalWrite(ledVerde1, LOW);
+		digitalWrite(LED_VERDE_1, LOW);
 	}
 
-	if (ledColore1 == rosso)
+	if (ledColore1 == ROSSO)
 	{
-		digitalWrite(ledRosso1, LOW);
+		digitalWrite(LED_ROSSO_1, LOW);
 	}
 
-	if (ledColore1 == blu)
+	if (ledColore1 == BLU)
 	{
-		digitalWrite(ledBlu1, LOW);
+		digitalWrite(LED_BLU_1, LOW);
 	}
 
-	if (ledColore1 == giallo)
+	if (ledColore1 == GIALLO)
 	{
-		digitalWrite(ledVerde1, LOW);
-		digitalWrite(ledRosso1, LOW);
+		digitalWrite(LED_VERDE_1, LOW);
+		digitalWrite(LED_ROSSO_1, LOW);
 
 	}
 
-	if (ledColore2 == verde)
+	if (ledColore2 == VERDE)
 	{
-		digitalWrite(ledVerde2, LOW);
+		digitalWrite(LED_VERDE_2, LOW);
 	}
 
-	if (ledColore2 == rosso)
+	if (ledColore2 == ROSSO)
 	{
-		digitalWrite(ledRosso2, LOW);
+		digitalWrite(LED_ROSSO_2, LOW);
 	}
 
-	if (ledColore2 == blu)
+	if (ledColore2 == BLU)
 	{
-		digitalWrite(ledBlu2, LOW);
+		digitalWrite(LED_BLU_2, LOW);
 	}
 
-	if (ledColore2 == giallo)
+	if (ledColore2 == GIALLO)
 	{
-		digitalWrite(ledVerde2, LOW);
-		digitalWrite(ledRosso2, LOW);
+		digitalWrite(LED_VERDE_2, LOW);
+		digitalWrite(LED_ROSSO_2, LOW);
 
 	}
-	if (ledColore3 == verde)
+	if (ledColore3 == VERDE)
 	{
-		digitalWrite(ledVerde3, LOW);
+		digitalWrite(LED_VERDE_3, LOW);
 	}
 
-	if (ledColore3 == rosso)
+	if (ledColore3 == ROSSO)
 	{
-		digitalWrite(ledRosso3, LOW);
+		digitalWrite(LED_ROSSO_3, LOW);
 	}
 
-	if (ledColore3 == blu)
+	if (ledColore3 == BLU)
 	{
-		digitalWrite(ledBlu3, LOW);
+		digitalWrite(LED_BLU_3, LOW);
 	}
 
-	if (ledColore3 == giallo)
+	if (ledColore3 == GIALLO)
 	{
-		digitalWrite(ledVerde3, LOW);
-		digitalWrite(ledRosso3, LOW);
+		digitalWrite(LED_VERDE_3, LOW);
+		digitalWrite(LED_ROSSO_3, LOW);
 
 	}
-	if (ledColore4 == verde)
+	if (ledColore4 == VERDE)
 	{
-		digitalWrite(ledVerde4, LOW);
+		digitalWrite(LED_VERDE_4, LOW);
 	}
 
-	if (ledColore4 == rosso)
+	if (ledColore4 == ROSSO)
 	{
-		digitalWrite(ledRosso4, LOW);
+		digitalWrite(LED_ROSSO_4, LOW);
 	}
 
-	if (ledColore4 == blu)
+	if (ledColore4 == BLU)
 	{
-		digitalWrite(ledBlu4, LOW);
+		digitalWrite(LED_BLU_4, LOW);
 	}
 
-	if (ledColore4 == giallo)
+	if (ledColore4 == GIALLO)
 	{
-		digitalWrite(ledVerde4, LOW);
-		digitalWrite(ledRosso4, LOW);
+		digitalWrite(LED_VERDE_4, LOW);
+		digitalWrite(LED_ROSSO_4, LOW);
 
 	}
 
@@ -276,11 +276,11 @@ void impostaColoreBottoni(int ledColore1, int ledColore2, int ledColore3, int le
 }
 
 void ventola() {
-	playTrack(audioSoffia);
+	playTrack(AUDIO_SOFFIA);
 }
 
 void scuoti() {
-	playTrack(audioScuoti);
+	playTrack(AUDIO_SCUOTI);
 }
 
 void controlloAzioni() {
@@ -323,7 +323,7 @@ void controlloAzioni() {
 			  }
 			  break;
 	}
-		//bottoneGrande
+		//BOTTONE_GRANDE
 	case 2:
 	{
 			  if (bottoniColoratiPremuti() || ventolaSoffiata() || bottoneManigliaPremuto() /*|| scosso() */) {
@@ -354,7 +354,7 @@ void controlloAzioni() {
 			  }
 			  break;
 	}
-		//bottoneManiglia
+		//BOTTONE_MANIGLIA
 	case 4:
 	{
 			  if (bottoniColoratiPremuti() || ventolaSoffiata() || bottoneGrandePremuto() /*|| scosso()*/) {
@@ -385,28 +385,28 @@ void resettaAccelerometro() {
 
 void mossaGiustaColorati() {
 
-	playTrack(audioGiusto);
+	playTrack(AUDIO_GIUSTO);
 	spegniLed();
 	int ledDaIlluminare;
 	switch (pulsanteDaScegliere) {
 	case 0:
 	{
-			  ledDaIlluminare = ledVerde1;
+			  ledDaIlluminare = LED_VERDE_1;
 			  break;
 	}
 	case 1:
 	{
-			  ledDaIlluminare = ledVerde2;
+			  ledDaIlluminare = LED_VERDE_2;
 			  break;
 	}
 	case 2:
 	{
-			  ledDaIlluminare = ledVerde3;
+			  ledDaIlluminare = LED_VERDE_3;
 			  break;
 	}
 	case 3:
 	{
-			  ledDaIlluminare = ledVerde4;
+			  ledDaIlluminare = LED_VERDE_4;
 			  break;
 	}
 
@@ -436,7 +436,7 @@ void mossaGiustaColorati() {
 
 
 void mossaGiustaScuoti() {
-	playTrack(audioGiusto);
+	playTrack(AUDIO_GIUSTO);
 	spegniLed();
 	delay(attesaNuovaAzione / 3);
 	resettaAccelerometro();
@@ -449,16 +449,16 @@ void mossaGiustaScuoti() {
 
 void mossaGiustaManiglia() {
 
-	playTrack(audioGiusto);
+	playTrack(AUDIO_GIUSTO);
 	spegniLed();
 
-	digitalWrite(ledVerdeManiglia, LOW);
+	digitalWrite(LED_VERDE_MANIGLIA, LOW);
 	delay(attesaNuovaAzione / 10);
-	digitalWrite(ledVerdeManiglia, HIGH);
+	digitalWrite(LED_VERDE_MANIGLIA, HIGH);
 	delay(attesaNuovaAzione / 10);
-	digitalWrite(ledVerdeManiglia, LOW);
+	digitalWrite(LED_VERDE_MANIGLIA, LOW);
 	delay(attesaNuovaAzione / 10);
-	digitalWrite(ledVerdeManiglia, HIGH);
+	digitalWrite(LED_VERDE_MANIGLIA, HIGH);
 
 
 	azioneFatta = true;
@@ -474,11 +474,11 @@ void mossaGiustaManiglia() {
 
 
 void mossaGiustaSoffia() {
-	playTrack(audioGiusto);
+	playTrack(AUDIO_GIUSTO);
 	spegniLed();
-	analogWrite(pinVentolaOut, 255);
+	analogWrite(PIN_VENTOLA_OUT, 255);
 	delay(attesaNuovaAzione / 3);
-	analogWrite(pinVentolaOut, 0);
+	analogWrite(PIN_VENTOLA_OUT, 0);
 	resettaAccelerometro();
 	// if(modalitaScelta != 3)
 	azioneFatta = true;
@@ -490,15 +490,15 @@ void mossaGiustaSoffia() {
 
 
 void mossaGiustaSchiaccia() {
-	playTrack(audioSbaam);
+	playTrack(AUDIO_SBAAM);
 	spegniLed();
-	digitalWrite(ledVerdeGrande1, LOW);
+	digitalWrite(LED_VERDE_GRANDE_1, LOW);
 	delay(attesaNuovaAzione / 10);
-	digitalWrite(ledVerdeGrande1, HIGH);
+	digitalWrite(LED_VERDE_GRANDE_1, HIGH);
 	delay(attesaNuovaAzione / 10);
-	digitalWrite(ledVerdeGrande1, LOW);
+	digitalWrite(LED_VERDE_GRANDE_1, LOW);
 	delay(attesaNuovaAzione / 10);
-	digitalWrite(ledVerdeGrande1, HIGH);
+	digitalWrite(LED_VERDE_GRANDE_1, HIGH);
 
 
 
@@ -516,7 +516,7 @@ void mossaGiustaSchiaccia() {
 
 void mossaSbagliata() {
 	inPartita = false;
-	playTrack(audioSbagliato);
+	playTrack(AUDIO_SBAGLIATO);
 	spegniLed();
 	accendiLedRosso();
 	avviaVibrazione();
@@ -534,36 +534,36 @@ void mossaSbagliata() {
 
 void schiaccia() {
 
-	digitalWrite(ledBluGrande1, LOW);
+	digitalWrite(LED_BLU_GRANDE_1, LOW);
 
-	playTrack(audioSchiaccia);
+	playTrack(AUDIO_SCHIACCIA);
 }
 
 void gira(){
-	digitalWrite(ledBluManiglia, LOW);
+	digitalWrite(LED_BLU_MANIGLIA, LOW);
 
-	playTrack(audioGira);
+	playTrack(AUDIO_GIRA);
 
 }
 
 void accendiLedRosso()
 {
-	digitalWrite(ledRosso1, LOW);
-	digitalWrite(ledRosso2, LOW);
-	digitalWrite(ledRosso3, LOW);
-	digitalWrite(ledRosso4, LOW);
-	digitalWrite(ledRossoGrande1, LOW);
-	digitalWrite(ledRossoManiglia, LOW);
+	digitalWrite(LED_ROSSO_1, LOW);
+	digitalWrite(LED_ROSSO_2, LOW);
+	digitalWrite(LED_ROSSO_3, LOW);
+	digitalWrite(LED_ROSSO_4, LOW);
+	digitalWrite(LED_ROSSO_GRANDE_1, LOW);
+	digitalWrite(LED_ROSSO_MANIGLIA, LOW);
 }
 
 void avviaVibrazione()
 {
-	analogWrite(pinVibrazione, 255);
+	analogWrite(PIN_VIBRAZIONE, 255);
 }
 
 void fermaVibrazione()
 {
-	analogWrite(pinVibrazione, 0);
+	analogWrite(PIN_VIBRAZIONE, 0);
 
 }
 

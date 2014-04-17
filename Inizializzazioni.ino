@@ -2,8 +2,8 @@
 void inizializzaVentola()
 {
 	//fermo la ventola
-	analogWrite(pinVentolaOut, 0);
-	altoVentola = digitalRead(pinVentolaIn);
+	analogWrite(PIN_VENTOLA_OUT, 0);
+	altoVentola = digitalRead(PIN_VENTOLA_IN);
 }
 
 
@@ -18,7 +18,7 @@ void inizializzaMp3Shield()
 	//Initialize the MP3 Player Shield
 	MP3player.begin();
 	//check result, see readme for error codes.
-	playTrack(audioMusica);
+	playTrack(AUDIO_MUSICA);
 
 
 }
@@ -37,67 +37,67 @@ void inizializzaLed() {
 
 	for (i = 0; i < 6; i++)
 	{
-		pinMode(ledPunteggio[i], OUTPUT);
+		pinMode(LED_PUNTEGGIO[i], OUTPUT);
 	}
 
 
-	pinMode(ledRosso1, OUTPUT);
-	pinMode(ledBlu1, OUTPUT);
-	pinMode(ledVerde1, OUTPUT);
+	pinMode(LED_ROSSO_1, OUTPUT);
+	pinMode(LED_BLU_1, OUTPUT);
+	pinMode(LED_VERDE_1, OUTPUT);
 
-	digitalWrite(ledRosso1, HIGH);
-	digitalWrite(ledBlu1, HIGH);
-	digitalWrite(ledVerde1, HIGH);
+	digitalWrite(LED_ROSSO_1, HIGH);
+	digitalWrite(LED_BLU_1, HIGH);
+	digitalWrite(LED_VERDE_1, HIGH);
 
-	pinMode(ledRosso2, OUTPUT);
-	pinMode(ledBlu2, OUTPUT);
-	pinMode(ledVerde2, OUTPUT);
+	pinMode(LED_ROSSO_2, OUTPUT);
+	pinMode(LED_BLU_2, OUTPUT);
+	pinMode(LED_VERDE_2, OUTPUT);
 
-	digitalWrite(ledRosso2, HIGH);
-	digitalWrite(ledBlu2, HIGH);
-	digitalWrite(ledVerde2, HIGH);
+	digitalWrite(LED_ROSSO_2, HIGH);
+	digitalWrite(LED_BLU_2, HIGH);
+	digitalWrite(LED_VERDE_2, HIGH);
 
-	pinMode(ledRosso3, OUTPUT);
-	pinMode(ledBlu3, OUTPUT);
-	pinMode(ledVerde3, OUTPUT);
+	pinMode(LED_ROSSO_3, OUTPUT);
+	pinMode(LED_BLU_3, OUTPUT);
+	pinMode(LED_VERDE_3, OUTPUT);
 
-	digitalWrite(ledRosso3, HIGH);
-	digitalWrite(ledBlu3, HIGH);
-	digitalWrite(ledVerde3, HIGH);
+	digitalWrite(LED_ROSSO_3, HIGH);
+	digitalWrite(LED_BLU_3, HIGH);
+	digitalWrite(LED_VERDE_3, HIGH);
 
-	pinMode(ledRossoManiglia, OUTPUT);
-	pinMode(ledBluManiglia, OUTPUT);
-	pinMode(ledVerdeManiglia, OUTPUT);
+	pinMode(LED_ROSSO_MANIGLIA, OUTPUT);
+	pinMode(LED_BLU_MANIGLIA, OUTPUT);
+	pinMode(LED_VERDE_MANIGLIA, OUTPUT);
 
-	digitalWrite(ledRossoManiglia, HIGH);
-	digitalWrite(ledBluManiglia, HIGH);
-	digitalWrite(ledVerdeManiglia, HIGH);
+	digitalWrite(LED_ROSSO_MANIGLIA, HIGH);
+	digitalWrite(LED_BLU_MANIGLIA, HIGH);
+	digitalWrite(LED_VERDE_MANIGLIA, HIGH);
 
-	pinMode(ledRosso4, OUTPUT);
-	pinMode(ledBlu4, OUTPUT);
-	pinMode(ledVerde4, OUTPUT);
+	pinMode(LED_ROSSO_4, OUTPUT);
+	pinMode(LED_BLU_4, OUTPUT);
+	pinMode(LED_VERDE_4, OUTPUT);
 
-	digitalWrite(ledRosso4, HIGH);
-	digitalWrite(ledBlu4, HIGH);
-	digitalWrite(ledVerde4, HIGH);
+	digitalWrite(LED_ROSSO_4, HIGH);
+	digitalWrite(LED_BLU_4, HIGH);
+	digitalWrite(LED_VERDE_4, HIGH);
 
-	pinMode(ledRossoGrande1, OUTPUT);
-	pinMode(ledBluGrande1, OUTPUT);
-	pinMode(ledVerdeGrande1, OUTPUT);
+	pinMode(LED_ROSSO_GRANDE_1, OUTPUT);
+	pinMode(LED_BLU_GRANDE_1, OUTPUT);
+	pinMode(LED_VERDE_GRANDE_1, OUTPUT);
 
-	digitalWrite(ledRossoGrande1, HIGH);
-	digitalWrite(ledBluGrande1, HIGH);
-	digitalWrite(ledVerdeGrande1, HIGH);
+	digitalWrite(LED_ROSSO_GRANDE_1, HIGH);
+	digitalWrite(LED_BLU_GRANDE_1, HIGH);
+	digitalWrite(LED_VERDE_GRANDE_1, HIGH);
 
 }
 
 
 
 void inizializzaBottoni() {
-	pinMode(bottone1, INPUT);
-	pinMode(bottone2, INPUT);
-	pinMode(bottone3, INPUT);
-	pinMode(bottoneGrande, INPUT);
+	pinMode(BOTTONE_1, INPUT);
+	pinMode(BOTTONE_2, INPUT);
+	pinMode(BOTTONE_3, INPUT);
+	pinMode(BOTTONE_GRANDE, INPUT);
 }
 
 

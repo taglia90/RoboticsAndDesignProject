@@ -216,7 +216,7 @@ void  controlloAzioniModalitaMemory()
 			  }
 			  break;
 	}
-		//bottoneGrande
+		//BOTTONE_GRANDE
 	case 2:
 	{
 			  if (bottoniColoratiPremuti() || ventolaSoffiata() || bottoneManigliaPremuto() || scosso()) {
@@ -251,7 +251,7 @@ void  controlloAzioniModalitaMemory()
 			  }
 			  break;
 	}
-		//bottoneManiglia
+		//BOTTONE_MANIGLIA
 	case 4:
 	{
 			  if (bottoniColoratiPremuti() || ventolaSoffiata() || bottoneGrandePremuto() || scosso()) {
@@ -300,11 +300,11 @@ void tempoScadutoMemory()
 void pulsantiColoratiMemory() {
 
 
-	impostaColoreBottoni(verde, blu, rosso, giallo);
+	impostaColoreBottoni(VERDE, BLU, ROSSO, GIALLO);
 	delay(timeOutAzione / 20);
-	impostaColoreBottoni(giallo, verde, blu, rosso);
+	impostaColoreBottoni(GIALLO, VERDE, BLU, ROSSO);
 	delay(timeOutAzione / 20);
-	impostaColoreBottoni(rosso, giallo, verde, blu);
+	impostaColoreBottoni(ROSSO, GIALLO, VERDE, BLU);
 	delay(timeOutAzione / 20);
 
 	spegniLed();
@@ -316,7 +316,7 @@ void pulsantiColoratiMemory() {
 	{
 
 			  if (modalitaScelta != 2)
-				  playTrack(audioVerde);
+				  playTrack(AUDIO_VERDE);
 
 
 			  switch (pulsanteDaScegliere) {
@@ -325,25 +325,25 @@ void pulsantiColoratiMemory() {
 			  case 0:
 			  {
 
-						impostaColoreBottoni(verde, blu, rosso, giallo);
+						impostaColoreBottoni(VERDE, BLU, ROSSO, GIALLO);
 
 						break;
 			  }
 			  case 1:
 			  {
-						impostaColoreBottoni(giallo, verde, rosso, blu);
+						impostaColoreBottoni(GIALLO, VERDE, ROSSO, BLU);
 
 						break;
 			  }
 			  case 2:
 			  {
-						impostaColoreBottoni(rosso, giallo, verde, blu);
+						impostaColoreBottoni(ROSSO, GIALLO, VERDE, BLU);
 
 						break;
 			  }
 			  case 3:
 			  {
-						impostaColoreBottoni(rosso, giallo, blu, verde);
+						impostaColoreBottoni(ROSSO, GIALLO, BLU, VERDE);
 
 						break;
 			  }
@@ -358,30 +358,30 @@ void pulsantiColoratiMemory() {
 	{
 
 			  if (modalitaScelta != 2)
-				  playTrack(audioBlu);
+				  playTrack(AUDIO_BLU);
 
 			  switch (pulsanteDaScegliere) {
 			  case 0:
 			  {
-						impostaColoreBottoni(blu, giallo, rosso, verde);
+						impostaColoreBottoni(BLU, GIALLO, ROSSO, VERDE);
 
 						break;
 			  }
 			  case 1:
 			  {
-						impostaColoreBottoni(giallo, blu, verde, rosso);
+						impostaColoreBottoni(GIALLO, BLU, VERDE, ROSSO);
 
 						break;
 			  }
 			  case 2:
 			  {
-						impostaColoreBottoni(giallo, rosso, blu, verde);
+						impostaColoreBottoni(GIALLO, ROSSO, BLU, VERDE);
 
 						break;
 			  }
 			  case 3:
 			  {
-						impostaColoreBottoni(rosso, giallo, verde, blu);
+						impostaColoreBottoni(ROSSO, GIALLO, VERDE, BLU);
 
 						break;
 			  }
@@ -395,30 +395,30 @@ void pulsantiColoratiMemory() {
 	case 2:
 	{
 			  if (modalitaScelta != 2)
-				  playTrack(audioRosso);
+				  playTrack(AUDIO_ROSSO);
 
 			  switch (pulsanteDaScegliere) {
 			  case 0:
 			  {
-						impostaColoreBottoni(rosso, giallo, verde, blu);
+						impostaColoreBottoni(ROSSO, GIALLO, VERDE, BLU);
 
 						break;
 			  }
 			  case 1:
 			  {
-						impostaColoreBottoni(giallo, rosso, verde, blu);
+						impostaColoreBottoni(GIALLO, ROSSO, VERDE, BLU);
 
 						break;
 			  }
 			  case 2:
 			  {
-						impostaColoreBottoni(giallo, blu, rosso, verde);
+						impostaColoreBottoni(GIALLO, BLU, ROSSO, VERDE);
 
 						break;
 			  }
 			  case 3:
 			  {
-						impostaColoreBottoni(giallo, verde, blu, rosso);
+						impostaColoreBottoni(GIALLO, VERDE, BLU, ROSSO);
 
 						break;
 			  }
@@ -433,30 +433,30 @@ void pulsantiColoratiMemory() {
 	case 3:
 	{
 			  if (modalitaScelta != 2)
-				  playTrack(audioGiallo);
+				  playTrack(AUDIO_GIALLO);
 
 			  switch (pulsanteDaScegliere) {
 			  case 0:
 			  {
-						impostaColoreBottoni(giallo, rosso, verde, blu);
+						impostaColoreBottoni(GIALLO, ROSSO, VERDE, BLU);
 
 						break;
 			  }
 			  case 1:
 			  {
-						impostaColoreBottoni(blu, giallo, verde, rosso);
+						impostaColoreBottoni(BLU, GIALLO, VERDE, ROSSO);
 
 						break;
 			  }
 			  case 2:
 			  {
-						impostaColoreBottoni(verde, blu, giallo, rosso);
+						impostaColoreBottoni(VERDE, BLU, GIALLO, ROSSO);
 
 						break;
 			  }
 			  case 3:
 			  {
-						impostaColoreBottoni(verde, blu, rosso, giallo);
+						impostaColoreBottoni(VERDE, BLU, ROSSO, GIALLO);
 
 
 						break;

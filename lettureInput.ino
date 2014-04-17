@@ -7,25 +7,25 @@ void leggiInput()
 	//Serial.println("leggo input");
 	aggiornaAccelerazione();
 
-	bottonePremutoGrande = digitalRead(bottoneGrande);
-	bottonePremuto1 = digitalRead(bottone1);
-	bottonePremuto2 = !digitalRead(bottone2);
-	bottonePremuto3 = digitalRead(bottone3);
-	bottonePremuto4 = !digitalRead(bottone4);
-	intensitaVentola = analogRead(pinVentolaIn);
+	bottonePremutoGrande = digitalRead(BOTTONE_GRANDE);
+	bottonePremuto1 = digitalRead(BOTTONE_1);
+	bottonePremuto2 = !digitalRead(BOTTONE_2);
+	bottonePremuto3 = digitalRead(BOTTONE_3);
+	bottonePremuto4 = !digitalRead(BOTTONE_4);
+	intensitaVentola = analogRead(PIN_VENTOLA_IN);
 
 
 	//Serial.println("intensitaVentola");
 
 	//Serial.println(intensitaVentola);
-	bottonePremutoManiglia = digitalRead(bottoneManiglia);
-	//  Serial.println("bottone1   ");
+	bottonePremutoManiglia = digitalRead(BOTTONE_MANIGLIA);
+	//  Serial.println("BOTTONE_1   ");
 	// Serial.println(bottonePremuto1);
-	// Serial.println("bottone2   ");
+	// Serial.println("BOTTONE_2   ");
 	// Serial.println(bottonePremuto2);
-	// Serial.println("bottone3   ");
+	// Serial.println("BOTTONE_3   ");
 	// Serial.println(bottonePremuto3);
-	// Serial.println("bottone4   ");
+	// Serial.println("BOTTONE_4   ");
 	// Serial.println(bottonePremuto4);
 	// Serial.println("bottonePremutoGrande   ");
 	// Serial.println(bottonePremutoGrande);
@@ -77,7 +77,7 @@ boolean bottoniColoratiPremuti()
 	return true;
 }
 
-boolean bottoneGrandePremuto()
+boolean BOTTONE_GRANDEPremuto()
 {
 	if (bottonePremutoGrande == 0)
 	{
@@ -86,7 +86,7 @@ boolean bottoneGrandePremuto()
 	return true;
 }
 
-boolean bottoneManigliaPremuto()
+boolean BOTTONE_MANIGLIAPremuto()
 {
 	if (bottonePremutoManiglia == 0)
 	{

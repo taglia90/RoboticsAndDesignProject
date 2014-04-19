@@ -15,6 +15,27 @@ void loopModalitaAudio()
 	//se non è la prima mossa guardo se il tempo è scaduto
 	if (primaMossa)
 	{
+
+		if (giocatoriInPartita > 1){
+			if (giocatoreCorrente == 0){
+				playTrack(AUDIO_PASSAMI_AL_VERDE);
+				delay(2000);
+			}
+			else if (giocatoreCorrente == 1){
+				playTrack(AUDIO_PASSAMI_AL_BLU);
+				delay(2000);
+			}
+			else if (giocatoreCorrente == 2){
+				playTrack(AUDIO_PASSAMI_AL_GIALLO);
+				delay(2000);
+			}
+			else if (giocatoreCorrente == 3){
+				playTrack(AUDIO_PASSAMI_AL_ROSSO);
+				delay(2000);
+			}
+		}
+
+
 		primaMossa = false;
 		timeOutAzione = 4000;
 

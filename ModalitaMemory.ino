@@ -27,6 +27,29 @@ void loopModalitaMemory()
 	//se non è la prima mossa guardo se il tempo è scaduto
 	if (primaMossa)
 	{
+
+		if (giocatoriInPartita > 1){
+			if (giocatoreCorrente == 0){
+				playTrack(AUDIO_PASSAMI_AL_VERDE);
+				delay(2000);
+			}
+			else if (giocatoreCorrente == 1){
+				playTrack(AUDIO_PASSAMI_AL_BLU);
+				delay(2000);
+			}
+			else if (giocatoreCorrente == 2){
+				playTrack(AUDIO_PASSAMI_AL_GIALLO);
+				delay(2000);
+			}
+			else if (giocatoreCorrente == 3){
+				playTrack(AUDIO_PASSAMI_AL_ROSSO);
+				delay(2000);
+			}
+		}
+
+
+
+
 		//   inAttesaUtente=false;
 		Serial.println("prima mossa");
 		inizioAzione = millis();
@@ -182,6 +205,7 @@ void  controlloAzioniModalitaMemory()
 				  || (pulsanteDaScegliere == 3 && bottonePremuto4 == 1)) {
 
 				  Serial.println("pulsante OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
+				  ++punteggioGiocatori[giocatoreCorrente];
 				  mossaGiustaColorati();
 
 
@@ -201,7 +225,7 @@ void  controlloAzioniModalitaMemory()
 			  if (ventolaSoffiata()) {
 
 				  Serial.println("Ventola OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
-
+				  ++punteggioGiocatori[giocatoreCorrente];
 				  mossaGiustaSoffia();
 
 				  posizioneAzione++;
@@ -219,6 +243,7 @@ void  controlloAzioniModalitaMemory()
 			  if (bottoneGrandePremuto()) {
 
 				  Serial.println("Bottone grande OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
+				  ++punteggioGiocatori[giocatoreCorrente];
 				  mossaGiustaSchiaccia();
 
 				  posizioneAzione++;
@@ -236,6 +261,7 @@ void  controlloAzioniModalitaMemory()
 			  if (scosso()) {
 
 				  Serial.println("Scosso OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
+				  ++punteggioGiocatori[giocatoreCorrente];
 				  mossaGiustaScuoti();
 
 				  posizioneAzione++;
@@ -254,6 +280,7 @@ void  controlloAzioniModalitaMemory()
 
 			  if (bottoneManigliaPremuto()) {
 				  Serial.println("Maniglia OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
+				  ++punteggioGiocatori[giocatoreCorrente];
 				  mossaGiustaManiglia();
 
 				  posizioneAzione++;

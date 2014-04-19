@@ -320,8 +320,10 @@ void controlloAzioni() {
 				  || (pulsanteDaScegliere == 2 && bottonePremuto3 == 1)
 				  || (pulsanteDaScegliere == 3 && bottonePremuto4 == 1)) {
 
-
+				  //	  ++punteggioGiocatori[giocatoreCorrente-1];
 				  mossaGiustaColorati();
+
+
 			  }
 			  break;
 	}
@@ -334,6 +336,7 @@ void controlloAzioni() {
 				  mossaSbagliata();
 			  }
 			  if (ventolaSoffiata()) {
+				  //	  punteggioGiocatori[giocatoreCorrente-1] = punteggioGiocatori[giocatoreCorrente-1] + 1;
 				  mossaGiustaSoffia();
 			  }
 			  break;
@@ -348,7 +351,7 @@ void controlloAzioni() {
 			  }
 			  if (bottoneGrandePremuto()) {
 
-
+				  //  punteggioGiocatori[giocatoreCorrente-1] = punteggioGiocatori[giocatoreCorrente-1] + 1;
 
 				  mossaGiustaSchiaccia();
 			  }
@@ -363,7 +366,7 @@ void controlloAzioni() {
 				  mossaSbagliata();
 			  }
 			  if (scosso()) {
-
+				  //  punteggioGiocatori[giocatoreCorrente - 1] = punteggioGiocatori[giocatoreCorrente - 1] + 1;
 				  mossaGiustaScuoti();
 
 			  }
@@ -379,7 +382,7 @@ void controlloAzioni() {
 			  }
 
 			  if (bottoneManigliaPremuto()) {
-
+				  //	  punteggioGiocatori[giocatoreCorrente - 1] = punteggioGiocatori[giocatoreCorrente - 1] + 1;
 				  mossaGiustaManiglia();
 			  }
 			  break;
@@ -389,6 +392,9 @@ void controlloAzioni() {
 	{
 			   break;
 	}
+
+
+
 	}
 }
 
@@ -522,6 +528,11 @@ void mossaGiustaSchiaccia() {
 }
 
 void mossaSbagliata() {
+
+	if (giocatoriInPartita > 1){
+		punteggioGiocatori[giocatoreCorrente] = mosseGiuste;
+	}
+
 	inPartita = false;
 	playTrack(AUDIO_SBAGLIATO);
 	spegniLed();
@@ -532,7 +543,11 @@ void mossaSbagliata() {
 	fermaVibrazione();
 	resettaAccelerometro();
 	azioneFatta = true;
-	resettaPartita();
+
+	//if (giocatoreCorrente == giocatoriInPartita - 1)
+		resettaPartita();
+	//else resettaPartitaMultiplayer();
+
 
 	return;
 }

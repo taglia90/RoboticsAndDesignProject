@@ -43,6 +43,7 @@ extern "C" void __cxa_pure_virtual() {;}
 //
 void spegniLed();
 void resettaPartita();
+void resettaPartitaMultiplayer();
 void accendiLedPunteggio();
 void spegniLedPunteggio();
 void playTrack(int track);

@@ -157,14 +157,18 @@ boolean inPartita = false;
 int mosseGiuste = 0;
 boolean primaMossa = true;
 
-
 //numero di giocatori in partita, inizialmente a 0
 int giocatoriInPartita = 0;
+
+int giocatoreCorrente = -1;
+int punteggioGiocatoreCorrente = 0;
 
 //vettore in cui una volta scelti i giocatori associo in ordine i colori scelti, dove  VERDE=1, ROSSO=2, BLU=3, GIALLO=4
 //esempio con due giocatori di colore GIALLO e ROSSO il vettore e' del tipo [4 2 0 0]
 int coloreGiocatori[4] = {
 	0, 0, 0, 0 };
+
+int punteggioGiocatori[4] = { -1, -1, -1, -1 };
 
 //variabile a 0 inizialmente oppure assume i valori 1 2 3 4 5 a seconda della modalita
 int modalitaScelta = 0;
@@ -203,7 +207,7 @@ void loop() {
 
 
 	//se non sono piu' in partita resetto modalita scelta a 0 (se viene premuto push ho in memoria la precedente)
-	if (!inPartita&&modalitaScelta != 0)
+	if (!inPartita && modalitaScelta != 0)	//&& giocatoreCorrente == giocatoriInPartita - 1
 	{
 
 		modalitaScelta = 0;
@@ -229,6 +233,65 @@ void loop() {
 	//se non è la prima mossa guardo se il tempo è scaduto
 
 
+
+	if (giocatoriInPartita > 1 && !inPartita){
+
+		
+
+		if (coloreGiocatori[0] != 0 && punteggioGiocatori[0] == -1){
+			Serial.println("ENTRO IF 000000000000000000000000000000000000000000000000000000000");
+
+			giocatoreCorrente = 0;
+			delay(2000);
+			
+		}
+		else if (coloreGiocatori[1] != 0 && punteggioGiocatori[1] == -1){
+			Serial.println("ENTRO IF 111111111111111111111111111111111111111111111111111111111111");
+		
+
+			giocatoreCorrente = 1;
+			delay(2000);
+			
+		}
+		else if (coloreGiocatori[2] != 0 && punteggioGiocatori[2] == -1){
+			Serial.println("ENTRO IF 222222222222222222222222222222222222222222222222222222222");
+		
+			giocatoreCorrente = 2;
+			delay(2000);
+		}
+		else if (coloreGiocatori[3] != 0 && punteggioGiocatori[3] == -1){
+			Serial.println("ENTRO IF 33333333333333333333333333333333333333333333333333333333");
+		
+			giocatoreCorrente = 3;
+			delay(2000);
+		}
+		else{
+			for (i = 0; i < 4; i++){
+			punteggioGiocatori[i] = -1;
+			}
+			giocatoreCorrente = -1;
+
+			//audio ha vinto il giocatore col punteggio maggiore, oppure spareggio
+			giocatoreCorrente = 0;
+			//if (punteggioGiocatori[0])
+
+
+			playTrack(AUDIO_GIUSTO);
+			delay(2000);
+			playTrack(AUDIO_GIUSTO);
+			delay(2000);
+			playTrack(AUDIO_GIUSTO);
+			delay(2000);
+		}
+
+		
+	}
+
+	Serial.print("giocatoreCorrente = ");
+	Serial.println(giocatoreCorrente);
+
+
+
 	if (modalitaScelta == 1)
 		loopModalitaSpeed();
 	else if (modalitaScelta == 2)
@@ -239,6 +302,8 @@ void loop() {
 		loopModalitaMemoryRandom();
 	else if (modalitaScelta == 5)
 		loopModalitaPassami();
+
+
 
 
 }
@@ -281,6 +346,20 @@ void resettaPartita() {
 	modalitaScelta = 0;
 }
 
+void resettaPartitaMultiplayer() {
+
+	Serial.println("resetto la partita multiplayer.................");
+	MP3player.setPlaySpeed(0);
+	primaMossa = true;
+	//playTrack(AUDIO_MUSICA);
+	accendiLedPunteggio();
+	spegniLedPunteggio();
+	delay(attesaNuovaPartita);
+
+	mosseGiuste = 0;
+	//modalitaScelta = 0;
+}
+
 void accendiLedPunteggio()
 {
 	if (modalitaScelta == 3)
@@ -288,6 +367,7 @@ void accendiLedPunteggio()
 		mosseGiuste = contaMosse;
 	}
 
+	//punteggioGiocatori[giocatoreCorrente] = mosseGiuste;
 	Serial.println("mosse giuste = ");
 	Serial.println(mosseGiuste);
 

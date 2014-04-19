@@ -77,26 +77,26 @@ void aggiornaSceltaGiocatori()
 	{
 		if (giocatoriSelezionati[0])
 		{
-			coloreGiocatori[giocatoriInPartita] = VERDE;
+			coloreGiocatori[0] = VERDE;
 			giocatoriInPartita++;
 
 		}
 		if (giocatoriSelezionati[1])
 		{
-			coloreGiocatori[giocatoriInPartita] = BLU;
+			coloreGiocatori[1] = BLU;
 			giocatoriInPartita++;
 
 		}
 		if (giocatoriSelezionati[2])
 		{
-			coloreGiocatori[giocatoriInPartita] = GIALLO;
+			coloreGiocatori[2] = GIALLO;
 			giocatoriInPartita++;
 
 		}
 		if (giocatoriSelezionati[3])
 		{
-			coloreGiocatori[giocatoriInPartita] = ROSSO;
-			modalitaScelta++;
+			coloreGiocatori[3] = ROSSO;
+			giocatoriInPartita++;
 
 		}
 		if (modalitaScelta > 0)
@@ -124,6 +124,9 @@ void scegliModalita()
 {
 	if ((millis() - inizioSceltaModalita) > TIMEOUT_SCELTA_GIOCATORE)
 	{
+		/*for (i = 0; i < 4; i++){
+			punteggioGiocatori[i] = -1;
+		}*/
 		avviaSceltaModalita();
 	}
 

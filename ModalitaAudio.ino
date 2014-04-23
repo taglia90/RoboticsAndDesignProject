@@ -13,7 +13,7 @@ void loopModalitaAudio()
 	}
 
 	//se non è la prima mossa guardo se il tempo è scaduto
-	if (primaMossa)
+	if (primaMossa && inPartita)
 	{
 
 		if (giocatoriInPartita > 1){

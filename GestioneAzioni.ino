@@ -320,10 +320,7 @@ void controlloAzioni() {
 				  || (pulsanteDaScegliere == 2 && bottonePremuto3 == 1)
 				  || (pulsanteDaScegliere == 3 && bottonePremuto4 == 1)) {
 
-				  //	  ++punteggioGiocatori[giocatoreCorrente-1];
 				  mossaGiustaColorati();
-
-
 			  }
 			  break;
 	}
@@ -336,7 +333,6 @@ void controlloAzioni() {
 				  mossaSbagliata();
 			  }
 			  if (ventolaSoffiata()) {
-				  //	  punteggioGiocatori[giocatoreCorrente-1] = punteggioGiocatori[giocatoreCorrente-1] + 1;
 				  mossaGiustaSoffia();
 			  }
 			  break;
@@ -351,8 +347,6 @@ void controlloAzioni() {
 			  }
 			  if (bottoneGrandePremuto()) {
 
-				  //  punteggioGiocatori[giocatoreCorrente-1] = punteggioGiocatori[giocatoreCorrente-1] + 1;
-
 				  mossaGiustaSchiaccia();
 			  }
 			  break;
@@ -366,7 +360,6 @@ void controlloAzioni() {
 				  mossaSbagliata();
 			  }
 			  if (scosso()) {
-				  //  punteggioGiocatori[giocatoreCorrente - 1] = punteggioGiocatori[giocatoreCorrente - 1] + 1;
 				  mossaGiustaScuoti();
 
 			  }
@@ -382,7 +375,6 @@ void controlloAzioni() {
 			  }
 
 			  if (bottoneManigliaPremuto()) {
-				  //	  punteggioGiocatori[giocatoreCorrente - 1] = punteggioGiocatori[giocatoreCorrente - 1] + 1;
 				  mossaGiustaManiglia();
 			  }
 			  break;
@@ -529,9 +521,16 @@ void mossaGiustaSchiaccia() {
 
 void mossaSbagliata() {
 
-	if (giocatoriInPartita > 1){
+	if (giocatoriInPartita > 1){		//aggiorno il punteggio del giocatore nella modalità multiplayer
 		punteggioGiocatori[giocatoreCorrente] = mosseGiuste;
 	}
+	/*if (modalitaScelta == 5){	//tolgo il giocatore che ha sbagliato dalla lista dei giocatori della modalità passami
+		Serial.print("Tolgo il giocatore= ");
+		Serial.println(giocatoreCorrente);
+		punteggioGiocatori[giocatoreCorrente] = -1;
+		//coloreGiocatori[giocatoreCorrente] = 0;
+		giocatoriInPartita--;
+		}*/
 
 	inPartita = false;
 	playTrack(AUDIO_SBAGLIATO);
@@ -544,13 +543,42 @@ void mossaSbagliata() {
 	resettaAccelerometro();
 	azioneFatta = true;
 
-	//if (giocatoreCorrente == giocatoriInPartita - 1)
-		resettaPartita();
-	//else resettaPartitaMultiplayer();
 
+	if (inPartitaMultiplayer)		//if (giocatoreCorrente < giocatoriInPartita)			
+		resettaPartitaMultiplayer();
+	else
+		resettaPartita();
 
 	return;
 }
+
+void mossaSbagliataPassami() {
+
+
+	punteggioGiocatori[giocatoreCorrente] = -1;
+	coloreGiocatori[giocatoreCorrente] = 0;
+	giocatoriInPartita--;
+
+	inPartita = false;
+	playTrack(AUDIO_SBAGLIATO);
+	spegniLed();
+	accendiLedRosso();
+	avviaVibrazione();
+	delay(1000);
+	spegniLed();
+	fermaVibrazione();
+	resettaAccelerometro();
+	azioneFatta = true;
+
+	resettaPartitaMultiplayer();
+	/*if (giocatoreCorrente < giocatoriInPartita)			//da sistemare, non va sempre bene
+		resettaPartitaMultiplayer();
+		else
+		resettaPartita();
+		*/
+	return;
+}
+
 
 void accendiLedRosso()
 {

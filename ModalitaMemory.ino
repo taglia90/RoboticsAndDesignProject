@@ -8,7 +8,7 @@ void loopModalitaMemory()
 
 	if (!primaMossa && inPartita)
 	{
-		Serial.println("guardo tempoScaduto");
+		//Serial.println("guardo tempoScaduto");
 		tempoScadutoMemory();
 
 	}
@@ -25,7 +25,7 @@ void loopModalitaMemory()
 	}
 
 	//se non è la prima mossa guardo se il tempo è scaduto
-	if (primaMossa)
+	if (primaMossa && inPartita)
 	{
 
 		if (giocatoriInPartita > 1){
@@ -72,8 +72,6 @@ void loopModalitaMemory()
 
 
 		for (j = 0; j <= contaMosse; j++){   //cosi' faccio un ciclo in piu' di contaMosse
-			Serial.println("j= ");
-			Serial.println(j);
 
 
 			if (mosseModalitaMemory[j][0] != -1){
@@ -195,7 +193,6 @@ void  controlloAzioniModalitaMemory()
 				  || bottoneGrandePremuto()
 				  || ventolaSoffiata()
 				  || scosso()) {
-				  Serial.println("bottoni colorati sbagliati");
 				  mossaSbagliata();
 				  posizioneAzione = 0;
 			  }
@@ -204,8 +201,7 @@ void  controlloAzioniModalitaMemory()
 				  || (pulsanteDaScegliere == 2 && bottonePremuto3 == 1)
 				  || (pulsanteDaScegliere == 3 && bottonePremuto4 == 1)) {
 
-				  Serial.println("pulsante OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
-				  ++punteggioGiocatori[giocatoreCorrente];
+				  // ++punteggioGiocatori[giocatoreCorrente];
 				  mossaGiustaColorati();
 
 
@@ -217,15 +213,12 @@ void  controlloAzioniModalitaMemory()
 	case 1:
 	{
 			  if (bottoniColoratiPremuti() || bottoneGrandePremuto() || bottoneManigliaPremuto() || scosso()) {
-				  Serial.println("soffia sbagliati");
 				  mossaSbagliata();
-				  //  totaleAzioniFatto
 				  posizioneAzione = 0;
 			  }
 			  if (ventolaSoffiata()) {
 
-				  Serial.println("Ventola OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
-				  ++punteggioGiocatori[giocatoreCorrente];
+				  //  ++punteggioGiocatori[giocatoreCorrente];
 				  mossaGiustaSoffia();
 
 				  posizioneAzione++;
@@ -236,14 +229,12 @@ void  controlloAzioniModalitaMemory()
 	case 2:
 	{
 			  if (bottoniColoratiPremuti() || ventolaSoffiata() || bottoneManigliaPremuto() || scosso()) {
-				  Serial.println("bottone grande sbagliati");
 				  mossaSbagliata();
 				  posizioneAzione = 0;
 			  }
 			  if (bottoneGrandePremuto()) {
 
-				  Serial.println("Bottone grande OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
-				  ++punteggioGiocatori[giocatoreCorrente];
+				  //				  ++punteggioGiocatori[giocatoreCorrente];
 				  mossaGiustaSchiaccia();
 
 				  posizioneAzione++;
@@ -254,14 +245,12 @@ void  controlloAzioniModalitaMemory()
 	case 3:
 	{
 			  if (bottoniColoratiPremuti() || ventolaSoffiata() || bottoneManigliaPremuto() || bottoneGrandePremuto()) {
-				  Serial.println("scuoti sbagliati");
 				  mossaSbagliata();
 				  posizioneAzione = 0;
 			  }
 			  if (scosso()) {
 
-				  Serial.println("Scosso OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
-				  ++punteggioGiocatori[giocatoreCorrente];
+				  //	  ++punteggioGiocatori[giocatoreCorrente];
 				  mossaGiustaScuoti();
 
 				  posizioneAzione++;
@@ -273,14 +262,12 @@ void  controlloAzioniModalitaMemory()
 	case 4:
 	{
 			  if (bottoniColoratiPremuti() || ventolaSoffiata() || bottoneGrandePremuto() || scosso()) {
-				  Serial.println("maniglia sbagliati");
 				  mossaSbagliata();
 				  posizioneAzione = 0;
 			  }
 
 			  if (bottoneManigliaPremuto()) {
-				  Serial.println("Maniglia OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
-				  ++punteggioGiocatori[giocatoreCorrente];
+				  //	  ++punteggioGiocatori[giocatoreCorrente];
 				  mossaGiustaManiglia();
 
 				  posizioneAzione++;
@@ -296,8 +283,6 @@ void  controlloAzioniModalitaMemory()
 
 
 	if (mosseModalitaMemory[posizioneAzione][0] == -1 && azioneFatta){
-		Serial.println("ENTRO IFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
-
 		totaleAzioniFatto = true;
 	}
 

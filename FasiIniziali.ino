@@ -124,9 +124,6 @@ void scegliModalita()
 {
 	if ((millis() - inizioSceltaModalita) > TIMEOUT_SCELTA_GIOCATORE)
 	{
-		/*for (i = 0; i < 4; i++){
-			punteggioGiocatori[i] = -1;
-		}*/
 		avviaSceltaModalita();
 	}
 

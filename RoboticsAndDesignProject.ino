@@ -47,18 +47,15 @@ const int AUDIO_START = 110;
 const int AUDIO_SOFFIA = 111;
 const int AUDIO_SCEGLI_GIOCATORI = 113;
 const int AUDIO_SCEGLI_MODALITA = 114;
-
 const int AUDIO_MODALITA_SPEED = 115;
 const int AUDIO_MODALITA_AUDIO = 116;          //manca
 const int AUDIO_MODALITA_MEMORY = 117;
 const int AUDIO_MODALITA_MEMORY_RANDOM = 118;
 const int AUDIO_MODALITA_PASSAMI = 119;
-
 const int AUDIO_PASSAMI_AL_BLU = 120;
 const int AUDIO_PASSAMI_AL_GIALLO = 121;
 const int AUDIO_PASSAMI_AL_ROSSO = 122;
 const int AUDIO_PASSAMI_AL_VERDE = 123;
-
 const int AUDIO_SPAREGGIO = 124;		//manca
 const int AUDIO_VINCE = 125;			//manca
 
@@ -66,7 +63,6 @@ const int AUDIO_VINCE = 125;			//manca
 const int LED_ROSSO_1 = 22;
 const int LED_VERDE_1 = 23;
 const int LED_BLU_1 = 24;
-
 
 //bottone rgb 1
 const int BOTTONE_1 = 25;
@@ -76,7 +72,6 @@ const int LED_ROSSO_2 = 26;
 const int LED_VERDE_2 = 27;
 const int LED_BLU_2 = 28;
 
-
 //bottone rgb 2
 const int BOTTONE_2 = 29;
 
@@ -84,7 +79,6 @@ const int BOTTONE_2 = 29;
 const int LED_ROSSO_3 = 30;
 const int LED_VERDE_3 = 31;
 const int LED_BLU_3 = 32;
-
 
 //bottone rgb 3
 const int BOTTONE_3 = 33;
@@ -94,17 +88,15 @@ const int LED_ROSSO_4 = 34;
 const int LED_VERDE_4 = 35;
 const int LED_BLU_4 = 36;
 
-
 //bottone rgb 4
 const int BOTTONE_4 = 37;
 
-//led rgb sbaaaaaaaaam
+//led rgb pulsantone
 const int LED_ROSSO_GRANDE_1 = 38;
 const int LED_VERDE_GRANDE_1 = 39;
 const int LED_BLU_GRANDE_1 = 40;
 
-
-//bottone rgb sbaaaaam
+//bottone rgb pulsantone
 const int BOTTONE_GRANDE = 41;
 
 //led rgb maniglia
@@ -112,15 +104,12 @@ const int LED_ROSSO_MANIGLIA = 42;
 const int LED_VERDE_MANIGLIA = 43;
 const int LED_BLU_MANIGLIA = 44;
 
-
 //bottone rgb maniglia
 const int BOTTONE_MANIGLIA = 45;
-
 
 //led punteggio
 const int LED_PUNTEGGIO[6] = {
 	21, 20, 19, 18, 17, 16 };
-
 
 //ventola
 const int PIN_VENTOLA_OUT = A13;
@@ -137,6 +126,7 @@ int bottonePremuto4;
 int bottonePremutoGrande;
 int bottonePremutoManiglia;
 
+//corrispondenza colori
 const int VERDE = 1;
 const int ROSSO = 2;
 const int BLU = 3;
@@ -162,10 +152,9 @@ int limiteAccelerazione = 13000;
 int timeOutAzione = 4000;
 
 float inizioAzione;
+int mosseGiuste = 0;
 boolean inPartita = false;
 boolean inPartitaMultiplayer = false;
-//boolean inPartitaPassami = false;
-int mosseGiuste = 0;
 boolean primaMossa = true;
 
 //numero di giocatori in partita, inizialmente a 0
@@ -175,7 +164,7 @@ int giocatoreCorrente = -1;
 int punteggioGiocatoreCorrente = 0;
 int punteggioMassimo = 0;
 
-//vettore in cui una volta scelti i giocatori associo in ordine i colori scelti, dove  VERDE=1, ROSSO=2, BLU=3, GIALLO=4
+//vettore in cui una volta scelti i giocatori associo in ordine i colori scelti
 //esempio con due giocatori di colore GIALLO e ROSSO il vettore e' del tipo [4 2 0 0]
 int coloreGiocatori[4] = {
 	0, 0, 0, 0 };

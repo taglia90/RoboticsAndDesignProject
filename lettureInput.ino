@@ -18,8 +18,8 @@ void leggiInput()
 	//Serial.println("intensitaVentola");
 
 	//Serial.println(intensitaVentola);
-	bottonePremutoManiglia = digitalRead(BOTTONE_MANIGLIA);
-	/*  Serial.println("BOTTONE_1   ");
+	bottonePremutoManiglia = !digitalRead(BOTTONE_MANIGLIA);
+	  Serial.println("BOTTONE_1   ");
 	 Serial.println(bottonePremuto1);
 	 Serial.println("BOTTONE_2   ");
 	 Serial.println(bottonePremuto2);
@@ -30,12 +30,12 @@ void leggiInput()
 	 Serial.println("bottonePremutoGrande   ");
 	 Serial.println(bottonePremutoGrande);
 	 Serial.println("bottonePremutoManiglia   ");
-	 Serial.println(bottonePremutoManiglia);*/
-	 //Serial.println("intensitaVentola   ");
-	 //Serial.println(intensitaVentola);
-	// Serial.println("sommaAccelerazione   ");
-	// Serial.println(sommaAccelerazione);
-
+	 Serial.println(bottonePremutoManiglia);
+	 Serial.println("intensitaVentola   ");
+	 Serial.println(intensitaVentola);
+	 Serial.println("sommaAccelerazione   ");
+	 Serial.println(sommaAccelerazione);
+	 delay(100);
 
 }
 

@@ -35,21 +35,19 @@ void aggiornaSceltaGiocatori()
 	if (digitalRead(BOTTONE_1) && ((millis() - tempoSceltaBottoni[0]) > CONTROLLO_DOPPIO_CLICK))
 	{
 
-		// Serial.println();
-		// Serial.println();
 		giocatoriSelezionati[0] = !giocatoriSelezionati[0];
-		Serial.println("giocatori selezionati");
-		Serial.println(giocatoriSelezionati[0]);
+		//Serial.println("giocatori selezionati");
+		//Serial.println(giocatoriSelezionati[0]);
 
-		Serial.println("tempo selezionati");
-		Serial.println((millis() - tempoSceltaBottoni[0]));
+		//Serial.println("tempo selezionati");
+		//Serial.println((millis() - tempoSceltaBottoni[0]));
 
 
 		tempoSceltaBottoni[0] = millis();
 		digitalWrite(LED_VERDE_1, !digitalRead(LED_VERDE_1));
 		//  delay(400);
 	}
-	if (!digitalRead(BOTTONE_2) && ((millis() - tempoSceltaBottoni[1]) > CONTROLLO_DOPPIO_CLICK))
+	if (digitalRead(BOTTONE_2) && ((millis() - tempoSceltaBottoni[1]) > CONTROLLO_DOPPIO_CLICK))
 	{
 		giocatoriSelezionati[1] = !giocatoriSelezionati[1];
 		tempoSceltaBottoni[1] = millis();
@@ -64,7 +62,7 @@ void aggiornaSceltaGiocatori()
 		digitalWrite(LED_ROSSO_3, !digitalRead(LED_ROSSO_3));
 		//    delay(400);
 	}
-	if (!digitalRead(BOTTONE_4) && ((millis() - tempoSceltaBottoni[3]) > CONTROLLO_DOPPIO_CLICK))
+	if (digitalRead(BOTTONE_4) && ((millis() - tempoSceltaBottoni[3]) > CONTROLLO_DOPPIO_CLICK))
 	{
 		giocatoriSelezionati[3] = !giocatoriSelezionati[3];
 		tempoSceltaBottoni[3] = millis();
@@ -73,7 +71,7 @@ void aggiornaSceltaGiocatori()
 	}
 
 
-	if (digitalRead(BOTTONE_GRANDE))
+	if (!digitalRead(BOTTONE_GRANDE))
 	{
 		if (giocatoriSelezionati[0])
 		{
@@ -129,7 +127,7 @@ void scegliModalita()
 
 
 
-	if (digitalRead(BOTTONE_MANIGLIA) && ((millis() - tempoSceltaModalita) > CONTROLLO_DOPPIO_CLICK_MANIGLIA))
+	if (!digitalRead(BOTTONE_MANIGLIA) && ((millis() - tempoSceltaModalita) > CONTROLLO_DOPPIO_CLICK_MANIGLIA))
 	{
 		tempoSceltaModalita = millis();
 		inizioSceltaModalita = millis();
@@ -178,20 +176,20 @@ void scegliModalita()
 				   break;
 		}
 		}
-		Serial.println("modalita selezionata=         ");
-		Serial.println(modalitaTemporanea);
+		//Serial.println("modalita selezionata=         ");
+		//Serial.println(modalitaTemporanea);
 		// delay(400);
 
 
 	}
 
-	if (digitalRead(BOTTONE_GRANDE))
+	if (!digitalRead(BOTTONE_GRANDE))
 	{
 
-		Serial.println("  if(digitalRead(BOTTONE_GRANDE))");
+		//Serial.println("  if(!digitalRead(BOTTONE_GRANDE))");
 		modalitaScelta = modalitaTemporanea;
-		Serial.print("modalitaScelta=         ");
-		Serial.println(modalitaScelta);
+		//Serial.print("modalitaScelta=         ");
+		//Serial.println(modalitaScelta);
 		avviaPartita();
 	}
 
@@ -201,8 +199,7 @@ void avviaPartita()
 {
 	if (modalitaScelta != 0)
 	{
-		Serial.println("  avvvvvvvvvvviiiiiiiiiiiiiiiooooooooooooooooooooo");
-
+		//Serial.println("  avvvvvvvvvvviiiiiiiiiiiiiiiooooooooooooooooooooo");
 		playTrack(AUDIO_START);
 	}
 	inPartita = true;

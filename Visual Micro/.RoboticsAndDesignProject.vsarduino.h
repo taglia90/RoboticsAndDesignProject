@@ -49,7 +49,6 @@ void spegniLedPunteggio();
 void playTrack(int track);
 void scegliAzione();
 void tempoScaduto();
-void tempoScadutoPassami();
 void controlloCondizioniVittoriaESpareggio();
 void  avviaSceltaGiocatori();
 void aggiornaSceltaGiocatori();

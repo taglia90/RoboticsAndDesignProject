@@ -1,7 +1,6 @@
-
+//entro in questo loop quando viene scelta la modalita' speed
 void loopModalitaSpeed()
 {
-
 
 	// se non è ancora stata fatta un'azione
 	if (!azioneFatta)
@@ -13,7 +12,7 @@ void loopModalitaSpeed()
 		controlloAzioni();
 	}
 
-	//se non è la prima mossa guardo se il tempo è scaduto
+	
 	if (primaMossa && inPartita)
 	{
 
@@ -41,8 +40,8 @@ void loopModalitaSpeed()
 		timeOutAzione = 4000;
 
 		MP3player.setPlaySpeed(0);
-		Serial.println("velocitaaaa");
-		Serial.println(playspeed);
+		//Serial.println("velocitaaaa");
+		//Serial.println(playspeed);
 
 
 		//MP3player.setPlaySpeed(playspeed);
@@ -64,8 +63,8 @@ void loopModalitaSpeed()
 			}
 
 		}
-		Serial.println("timeOutAzione= ");
-		Serial.println(timeOutAzione);
+		//Serial.println("timeOutAzione= ");
+		//Serial.println(timeOutAzione);
 
 		switch (azioneDaEseguire) {
 
@@ -105,6 +104,7 @@ void loopModalitaSpeed()
 
 	}
 
+	//se non è la prima mossa guardo se il tempo è scaduto
 	if (!primaMossa && inPartita)
 	{
 		tempoScaduto();

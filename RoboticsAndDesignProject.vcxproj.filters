@@ -22,7 +22,6 @@
     <None Include="ModalitaAudio.ino" />
     <None Include="ModalitaMemory.ino" />
     <None Include="ModalitaMemoryRandom.ino" />
-    <None Include="ModalitaPartita.ino" />
     <None Include="ModalitaPassami.ino" />
     <None Include="ModalitaSpeed.ino" />
     <None Include="lettureInput.ino" />

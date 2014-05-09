@@ -4,6 +4,7 @@
 #include <SFEMP3Shield.h>
 #include <AcceleroMMA7361.h>
 
+
 AcceleroMMA7361 accelero;
 
 // Below is not needed if interrupt driven. Safe to remove if not using.
@@ -60,49 +61,49 @@ const int AUDIO_SPAREGGIO = 124;		//manca
 const int AUDIO_VINCE = 125;			//manca
 
 //led rgb 1
-const int LED_ROSSO_1 = 22;
+const int LED_ROSSO_1 = 24;
 const int LED_VERDE_1 = 23;
-const int LED_BLU_1 = 24;
+const int LED_BLU_1 = 22;
 
 //bottone rgb 1
 const int BOTTONE_1 = 25;
 
 //led rgb 2
-const int LED_ROSSO_2 = 26;
+const int LED_ROSSO_2 = 28;
 const int LED_VERDE_2 = 27;
-const int LED_BLU_2 = 28;
+const int LED_BLU_2 = 26;
 
 //bottone rgb 2
-const int BOTTONE_2 = 29;
+const int BOTTONE_2 = 33;
 
 //led rgb 3
-const int LED_ROSSO_3 = 30;
+const int LED_ROSSO_3 = 32;
 const int LED_VERDE_3 = 31;
-const int LED_BLU_3 = 32;
+const int LED_BLU_3 = 30;
 
 //bottone rgb 3
-const int BOTTONE_3 = 33;
+const int BOTTONE_3 = 29;
 
 //led rgb 4
-const int LED_ROSSO_4 = 34;
-const int LED_VERDE_4 = 35;
-const int LED_BLU_4 = 36;
+const int LED_ROSSO_4 = 40;
+const int LED_VERDE_4 = 39;
+const int LED_BLU_4 = 38;
 
 //bottone rgb 4
 const int BOTTONE_4 = 37;
 
 //led rgb pulsantone
-const int LED_ROSSO_GRANDE_1 = 38;
-const int LED_VERDE_GRANDE_1 = 39;
-const int LED_BLU_GRANDE_1 = 40;
+const int LED_ROSSO_GRANDE_1 = 36;
+const int LED_VERDE_GRANDE_1 = 35;
+const int LED_BLU_GRANDE_1 = 34;
 
 //bottone rgb pulsantone
 const int BOTTONE_GRANDE = 41;
 
 //led rgb maniglia
-const int LED_ROSSO_MANIGLIA = 42;
+const int LED_ROSSO_MANIGLIA = 44;
 const int LED_VERDE_MANIGLIA = 43;
-const int LED_BLU_MANIGLIA = 44;
+const int LED_BLU_MANIGLIA = 42;
 
 //bottone rgb maniglia
 const int BOTTONE_MANIGLIA = 45;
@@ -207,36 +208,32 @@ void setup() {
 
 void loop() {
 
-
-	//finche' non e' stato premuto il pulsante push continuo a controllare l'input dei pulsanti colorati
+	//if I don't detect players in the game:
+	//finche' non e' stato premuto il pulsantone continuo a controllare l'input dei pulsanti colorati
 	if (giocatoriInPartita <= 0)
 	{
-		aggiornaSceltaGiocatori();
+		aggiornaSceltaGiocatori();		//Updates player list
 	}
 
 
 
-
+	//if multiplayer (more than 1 player in game) && game not started && choosen mode != "Passami"
 	//Se sono nella modalità multiplayer entro in questo IF per capire quale giocatore sta giocando
 	if (giocatoriInPartita > 1 && !inPartita && modalitaScelta != 5){
 
 		if (coloreGiocatori[0] != 0 && punteggioGiocatori[0] == -1){
-			//			Serial.println("ENTRO IF 000000000000000000000000000000000000000000000000000000000");
 			inPartitaMultiplayer = true;
 			giocatoreCorrente = 0;
 		}
 		else if (coloreGiocatori[1] != 0 && punteggioGiocatori[1] == -1){
-			//	Serial.println("ENTRO IF 111111111111111111111111111111111111111111111111111111111111");
 			inPartitaMultiplayer = true;
 			giocatoreCorrente = 1;
 		}
 		else if (coloreGiocatori[2] != 0 && punteggioGiocatori[2] == -1){
-			//	Serial.println("ENTRO IF 222222222222222222222222222222222222222222222222222222222");
 			inPartitaMultiplayer = true;
 			giocatoreCorrente = 2;
 		}
 		else if (coloreGiocatori[3] != 0 && punteggioGiocatori[3] == -1){
-			//	Serial.println("ENTRO IF 33333333333333333333333333333333333333333333333333333333");
 			inPartitaMultiplayer = true;
 			giocatoreCorrente = 3;
 		}
@@ -248,7 +245,7 @@ void loop() {
 	}
 
 
-	//se non sono piu' in partita resetto modalita scelta a 0 (se viene premuto push ho in memoria la precedente)
+	//se è il primo avvio o se non sono piu' in partita resetto modalita scelta a 0 (se viene premuto push ho in memoria la precedente)
 	if (!inPartita && modalitaScelta != 0)
 	{
 		//resetto il timeOutAzione nel  caso fosse stato modificato dalla modalita' Speed o dalla modalita' audio
@@ -264,11 +261,10 @@ void loop() {
 	//quando ho i giocatori in partita rilevo il cambiamento della modalita  
 	if (giocatoriInPartita != 0 && modalitaScelta == 0)
 	{
-		//		Serial.println("Entro in SCEGLI MODALITAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 		scegliModalita();
 	}
 
-
+	//faccio partire la relativa modalità
 	if (modalitaScelta == 1)
 		loopModalitaSpeed();
 	else if (modalitaScelta == 2)
@@ -278,27 +274,10 @@ void loop() {
 	else if (modalitaScelta == 4)
 		loopModalitaMemoryRandom();
 	else if (modalitaScelta == 5)
-	{
 		loopModalitaPassami();
-	/*	Serial.print("giocatoriInPartita =");
-		Serial.println(giocatoriInPartita);
-		if (giocatoriInPartita == 1){		//coloreGiocatori[0] == 0 && coloreGiocatori[1] == 0 && coloreGiocatori[2] == 0 && coloreGiocatori[3] == 0){
-			//	Serial.println("ENTRO IFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
-			controlloCondizioniVittoriaESpareggio();
-		}
-		else{
-			//Serial.println("ENTRO ELSEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-			inPartitaMultiplayer = true;
-			for (i = 0; i < 4; i++){
-				if (coloreGiocatori[i] != 0){
-					punteggioGiocatori[i] = 0;
-				}
-			}
-			loopModalitaPassami();
-		}*/
-	}
 }
 
+//funzione che spegne tutti i led
 void spegniLed() {
 
 	digitalWrite(LED_ROSSO_MANIGLIA, HIGH);
@@ -322,9 +301,10 @@ void spegniLed() {
 	digitalWrite(LED_VERDE_1, HIGH);
 }
 
+//funzione che viene invocata quando finisce una partita
 void resettaPartita() {
 
-	Serial.println("resetto la partita.................");
+	//Serial.println("resetto la partita.................");
 	MP3player.setPlaySpeed(0);
 	primaMossa = true;
 	playTrack(AUDIO_MUSICA);
@@ -336,9 +316,10 @@ void resettaPartita() {
 	modalitaScelta = 0;
 }
 
+//funzione che viene invocata quando un giocatore finisce il suo turno nella modalita' multiplayer
 void resettaPartitaMultiplayer() {
 
-	Serial.println("resetto la partita multiplayer.................");
+	//Serial.println("resetto la partita multiplayer.................");
 	MP3player.setPlaySpeed(0);
 	primaMossa = true;
 	//playTrack(AUDIO_MUSICA);
@@ -349,9 +330,9 @@ void resettaPartitaMultiplayer() {
 	delay(attesaNuovaPartita);
 
 	mosseGiuste = 0;
-	//modalitaScelta = 0;
 }
 
+//funzione che accende i 6 led del punteggio
 void accendiLedPunteggio()
 {
 	if (modalitaScelta == 3)
@@ -362,7 +343,16 @@ void accendiLedPunteggio()
 	Serial.println("mosse giuste = ");
 	Serial.println(mosseGiuste);
 
-	for (i = 0; i<6; i++)
+	for (i = 0; i<2; i++)
+	{
+		if (mosseGiuste>((i + 1) * 3))
+		{
+			digitalWrite(LED_PUNTEGGIO[i], LOW);
+			delay(1000);
+		}
+	}
+
+	for (i = 3; i<6; i++)
 	{
 		if (mosseGiuste>((i + 1) * 3))
 		{
@@ -370,18 +360,24 @@ void accendiLedPunteggio()
 			delay(1000);
 		}
 	}
-
 }
 
+//funzione che spegne i 6 led del punteggio
 void spegniLedPunteggio()
 {
-	for (i = 0; i < 6; i++)
+	for (i = 0; i < 2; i++)
+	{
+		digitalWrite(LED_PUNTEGGIO[i], HIGH);
+
+	}
+	for (i = 3; i < 6; i++)
 	{
 		digitalWrite(LED_PUNTEGGIO[i], LOW);
 
 	}
 }
 
+//funzione che fa partire una determinata traccia audio
 void playTrack(int track) {
 	//if(!MP3player.isPlaying()) {
 
@@ -400,6 +396,7 @@ void playTrack(int track) {
 
 }
 
+//funzione invocata per selezionare un'azione da fare
 void scegliAzione()
 {
 
@@ -415,6 +412,7 @@ void scegliAzione()
 
 }
 
+//funzione  che quando scade il tempo in cui si deve fare un'azione invoca la funzione mossaSbagliata()
 void tempoScaduto() {
 	if (((millis() - inizioAzione) > timeOutAzione)) {
 
@@ -424,29 +422,30 @@ void tempoScaduto() {
 	}
 }
 
-void tempoScadutoPassami() {
+
+/*void tempoScadutoPassami() {
 	if (((millis() - inizioAzione) > timeOutAzione)) {
 
 		Serial.println("tempo scaduto con   ");
 		Serial.print((millis() - inizioAzione));
 		mossaSbagliataPassami();
 	}
-}
+}*/
 
+//fuonzione che controlla chi vince o in caso di pareggio seleziona i concorrenti che giocheranno lo spareggio
 void controlloCondizioniVittoriaESpareggio(){
 	giocatoreCorrente = -1;
 
-	Serial.println("\nStampa punteggi");
+/*	Serial.println("\nStampa punteggi");
 	Serial.println(punteggioGiocatori[0]);
 	Serial.println(punteggioGiocatori[1]);
 	Serial.println(punteggioGiocatori[2]);
-	Serial.println(punteggioGiocatori[3]);
+	Serial.println(punteggioGiocatori[3]);*/
 
 	//annuncio il vincitore
 	if (punteggioGiocatori[0] > punteggioGiocatori[1] && punteggioGiocatori[0] > punteggioGiocatori[2] && punteggioGiocatori[0] > punteggioGiocatori[3]){
 		inPartitaMultiplayer = false;
 		if (modalitaScelta == 5){
-			//coloreGiocatori[0] = 0;
 			giocatoriInPartita--;
 		}
 		playTrack(AUDIO_VINCE);
@@ -457,7 +456,6 @@ void controlloCondizioniVittoriaESpareggio(){
 	else if (punteggioGiocatori[1] > punteggioGiocatori[0] && punteggioGiocatori[1] > punteggioGiocatori[2] && punteggioGiocatori[1] > punteggioGiocatori[3]){
 		inPartitaMultiplayer = false;
 		if (modalitaScelta == 5){
-			//coloreGiocatori[1] = 0;
 			giocatoriInPartita--;
 		}
 		playTrack(AUDIO_VINCE);
@@ -468,7 +466,6 @@ void controlloCondizioniVittoriaESpareggio(){
 	else if (punteggioGiocatori[2] > punteggioGiocatori[0] && punteggioGiocatori[2] > punteggioGiocatori[1] && punteggioGiocatori[2] > punteggioGiocatori[3]){
 		inPartitaMultiplayer = false;
 		if (modalitaScelta == 5){
-			//coloreGiocatori[2] = 0;
 			giocatoriInPartita--;
 		}
 		playTrack(AUDIO_VINCE);
@@ -479,7 +476,6 @@ void controlloCondizioniVittoriaESpareggio(){
 	else if (punteggioGiocatori[3] > punteggioGiocatori[0] && punteggioGiocatori[3] > punteggioGiocatori[1] && punteggioGiocatori[3] > punteggioGiocatori[2]){
 		inPartitaMultiplayer = false;
 		if (modalitaScelta == 5){
-			//	coloreGiocatori[3] = 0;
 			giocatoriInPartita--;
 		}
 		playTrack(AUDIO_VINCE);

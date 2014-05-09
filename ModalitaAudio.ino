@@ -1,6 +1,6 @@
+//entro in questo loop quando viene scelta la modalita' audio
 void loopModalitaAudio()
 {
-
 
 	// se non è ancora stata fatta un'azione
 	if (!azioneFatta)
@@ -12,7 +12,7 @@ void loopModalitaAudio()
 		controlloAzioni();
 	}
 
-	//se non è la prima mossa guardo se il tempo è scaduto
+	
 	if (primaMossa && inPartita)
 	{
 
@@ -61,12 +61,11 @@ void loopModalitaAudio()
 			{
 				MP3player.setPlaySpeed(2);
 
-
 			}
 
 		}
-		Serial.println("timeOutAzione= ");
-		Serial.println(timeOutAzione);
+		//Serial.println("timeOutAzione= ");
+		//Serial.println(timeOutAzione);
 
 		switch (azioneDaEseguire) {
 
@@ -106,13 +105,12 @@ void loopModalitaAudio()
 
 	}
 
+	//se non è la prima mossa guardo se il tempo è scaduto
 	if (!primaMossa && inPartita)
 	{
 		tempoScaduto();
 
 	}
-
-
 
 }
 

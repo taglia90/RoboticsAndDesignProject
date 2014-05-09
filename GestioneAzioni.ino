@@ -20,14 +20,10 @@ void pulsantiColorati() {
 
 	case 0:
 	{
-
 			  if (modalitaScelta != 2)
 				  playTrack(AUDIO_VERDE);
 
-
 			  switch (pulsanteDaScegliere) {
-
-
 			  case 0:
 			  {
 
@@ -53,7 +49,6 @@ void pulsantiColorati() {
 
 						break;
 			  }
-
 			  default:
 				  break;
 			  }
@@ -91,8 +86,6 @@ void pulsantiColorati() {
 
 						break;
 			  }
-
-
 			  default:
 				  break;
 			  }
@@ -128,7 +121,6 @@ void pulsantiColorati() {
 
 						break;
 			  }
-
 			  default:
 				  break;
 			  }
@@ -167,7 +159,6 @@ void pulsantiColorati() {
 
 						break;
 			  }
-
 			  default:
 				  break;
 
@@ -205,7 +196,6 @@ void impostaColoreBottoni(int ledColore1, int ledColore2, int ledColore3, int le
 	{
 		digitalWrite(LED_VERDE_1, LOW);
 		digitalWrite(LED_ROSSO_1, LOW);
-
 	}
 
 	if (ledColore2 == VERDE)
@@ -227,8 +217,8 @@ void impostaColoreBottoni(int ledColore1, int ledColore2, int ledColore3, int le
 	{
 		digitalWrite(LED_VERDE_2, LOW);
 		digitalWrite(LED_ROSSO_2, LOW);
-
 	}
+
 	if (ledColore3 == VERDE)
 	{
 		digitalWrite(LED_VERDE_3, LOW);
@@ -248,8 +238,8 @@ void impostaColoreBottoni(int ledColore1, int ledColore2, int ledColore3, int le
 	{
 		digitalWrite(LED_VERDE_3, LOW);
 		digitalWrite(LED_ROSSO_3, LOW);
-
 	}
+
 	if (ledColore4 == VERDE)
 	{
 		digitalWrite(LED_VERDE_4, LOW);
@@ -269,11 +259,11 @@ void impostaColoreBottoni(int ledColore1, int ledColore2, int ledColore3, int le
 	{
 		digitalWrite(LED_VERDE_4, LOW);
 		digitalWrite(LED_ROSSO_4, LOW);
-
 	}
 
 
 }
+
 
 void ventola() {
 	playTrack(AUDIO_SOFFIA);
@@ -297,7 +287,7 @@ void gira(){
 
 }
 
-
+//controllo se ho fatto l'azione giusta altrimenti chiamo la funzione mossaSbagliata()
 void controlloAzioni() {
 	switch (azioneDaEseguire) {
 
@@ -390,12 +380,14 @@ void controlloAzioni() {
 	}
 }
 
+//resetto i valori dell'accelerometro
 void resettaAccelerometro() {
 	accelerazioneParziale = 0;
 	inizioAccelerazione = millis();
 	sommaAccelerazione = 0;
 }
 
+//funzione che illumina i led quando faccio la mossa giusta relativa
 void mossaGiustaColorati() {
 
 	playTrack(AUDIO_GIUSTO);
@@ -447,6 +439,7 @@ void mossaGiustaColorati() {
 	return;
 }
 
+//funzione che viene invocata quando scuoto correttamente
 void mossaGiustaScuoti() {
 	playTrack(AUDIO_GIUSTO);
 	spegniLed();
@@ -459,6 +452,7 @@ void mossaGiustaScuoti() {
 	return;
 }
 
+//funzione che viene invocata quando tiro correttamente la maniglia
 void mossaGiustaManiglia() {
 
 	playTrack(AUDIO_GIUSTO);
@@ -482,6 +476,7 @@ void mossaGiustaManiglia() {
 	return;
 }
 
+//funzione che viene invocata quando soffio correttamente
 void mossaGiustaSoffia() {
 	playTrack(AUDIO_GIUSTO);
 	spegniLed();
@@ -496,6 +491,7 @@ void mossaGiustaSoffia() {
 	return;
 }
 
+//funzione che viene invocata quando schiaccio correttamente il pulsantone
 void mossaGiustaSchiaccia() {
 	playTrack(AUDIO_SBAAM);
 	spegniLed();
@@ -507,10 +503,6 @@ void mossaGiustaSchiaccia() {
 	delay(attesaNuovaAzione / 10);
 	digitalWrite(LED_VERDE_GRANDE_1, HIGH);
 
-
-
-
-
 	resettaAccelerometro();
 	//  if(modalitaScelta != 3)
 	azioneFatta = true;
@@ -519,18 +511,12 @@ void mossaGiustaSchiaccia() {
 	return;
 }
 
+//funzione che viene invocata quando sbaglio qualche mossa
 void mossaSbagliata() {
 
 	if (giocatoriInPartita > 1){		//aggiorno il punteggio del giocatore nella modalità multiplayer
 		punteggioGiocatori[giocatoreCorrente] = mosseGiuste;
 	}
-	/*if (modalitaScelta == 5){	//tolgo il giocatore che ha sbagliato dalla lista dei giocatori della modalità passami
-		Serial.print("Tolgo il giocatore= ");
-		Serial.println(giocatoreCorrente);
-		punteggioGiocatori[giocatoreCorrente] = -1;
-		//coloreGiocatori[giocatoreCorrente] = 0;
-		giocatoriInPartita--;
-		}*/
 
 	inPartita = false;
 	playTrack(AUDIO_SBAGLIATO);
@@ -552,8 +538,8 @@ void mossaSbagliata() {
 	return;
 }
 
+//funzione che viene invocata quando sbaglio qualche mossa nella modalita' passami
 void mossaSbagliataPassami() {
-
 
 	punteggioGiocatori[giocatoreCorrente] = -1;
 	coloreGiocatori[giocatoreCorrente] = 0;
@@ -579,7 +565,7 @@ void mossaSbagliataPassami() {
 	return;
 }
 
-
+//accendo tutti i led e li faccio diventare rossi
 void accendiLedRosso()
 {
 	digitalWrite(LED_ROSSO_1, LOW);
@@ -590,11 +576,13 @@ void accendiLedRosso()
 	digitalWrite(LED_ROSSO_MANIGLIA, LOW);
 }
 
+//attivo il pin corrispondente al motorino che vibra
 void avviaVibrazione()
 {
 	analogWrite(PIN_VIBRAZIONE, 255);
 }
 
+//disattivo il pin corrispondente al motorino che vibra
 void fermaVibrazione()
 {
 	analogWrite(PIN_VIBRAZIONE, 0);

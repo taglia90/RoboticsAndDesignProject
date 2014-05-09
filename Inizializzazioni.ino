@@ -19,7 +19,6 @@ void inizializzaMp3Shield()
 	//check result, see readme for error codes.
 	playTrack(AUDIO_MUSICA);
 
-
 }
 
 void inizializzaAccelerometro()
@@ -27,7 +26,6 @@ void inizializzaAccelerometro()
 	accelero.begin(47, 49, 46, 48, A8, A9, A10);
 	accelero.setSensitivity(HIGH);               //sets the sensitivity to +/-6G
 	accelero.calibrate();
-
 
 }
 

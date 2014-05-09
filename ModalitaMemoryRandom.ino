@@ -1,3 +1,6 @@
+//Come la modalita' memory, solo che ogni volta le azioni sono diverse
+
+//entro in questo loop quando viene scelta la modalita' memory random
 void loopModalitaMemoryRandom()
 {
 

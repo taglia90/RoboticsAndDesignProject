@@ -1,12 +1,11 @@
 //Modalità multigiocatore Passami!!!!: ogni rand() di azioni bisogna passarlo al giocatore di colore ROSSO/VERDE/BLU
 
 int azioniResidue = 0;
-//int giocatore = -1;
 int vecchioGiocatore = -1;
 
+//entro in questo loop quando viene scelta la modalita' passami
 void loopModalitaPassami()
 {
-
 
 	if (giocatoriInPartita == 1){
 
@@ -149,7 +148,7 @@ void loopModalitaPassami()
 
 	if (!primaMossa && inPartita)
 	{
-		tempoScadutoPassami();
+		tempoScaduto();//tempoScadutoPassami();
 
 	}
 
@@ -157,22 +156,22 @@ void loopModalitaPassami()
 
 }
 
-
+//cambio giocatore e memorizzo quante azioni deve fare
 void cambiaGiocatoreModalitaPassami(){
 	//Serial.println("cambiaGiocatoreModalitaPassamiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
 	timeOutAzione = 3000;
 	MP3player.setPlaySpeed(1);
 	azioniResidue = 3 + random(6);
-	Serial.print("Scelgo di fare N azioniResidue = ");
-	Serial.println(azioniResidue);
+	//Serial.print("Scelgo di fare N azioniResidue = ");
+	//Serial.println(azioniResidue);
 
 	vecchioGiocatore = giocatoreCorrente;
 
 
 	giocatoreCorrente = random(4);
 
-	Serial.print("Ho scelto il giocatore = ");
-	Serial.println(giocatoriInPartita);
+	//	Serial.print("Ho scelto il giocatore = ");
+	//Serial.println(giocatoriInPartita);
 
 	i = 0;		//variabile di controllo  per uscire dal ciclo while
 	while ((coloreGiocatori[giocatoreCorrente] == 0 || vecchioGiocatore == giocatoreCorrente) && i < 10)
@@ -262,7 +261,7 @@ void cambiaGiocatoreModalitaPassami(){
 
 }
 
-
+//come controlloAzioni però con le variabili della modalita' passami
 void controlloAzioniPassami() {
 	switch (azioneDaEseguire) {
 
@@ -349,8 +348,6 @@ void controlloAzioniPassami() {
 	{
 			   break;
 	}
-
-
 
 	}
 }

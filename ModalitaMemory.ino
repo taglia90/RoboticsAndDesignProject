@@ -3,6 +3,7 @@
 
 float timeOutAzioneMemory;
 
+//entro in questo loop quando viene scelta la modalita' memory
 void loopModalitaMemory()
 {
 
@@ -10,7 +11,6 @@ void loopModalitaMemory()
 	{
 		//Serial.println("guardo tempoScaduto");
 		tempoScadutoMemory();
-
 	}
 
 	// se non è ancora stata fatta un'azione
@@ -48,10 +48,8 @@ void loopModalitaMemory()
 		}
 
 
-
-
 		//   inAttesaUtente=false;
-		Serial.println("prima mossa");
+		//Serial.println("prima mossa");
 		inizioAzione = millis();
 		primaMossa = false;
 		inizializzaArrayMemory();
@@ -65,7 +63,7 @@ void loopModalitaMemory()
 
 	if (azioneFatta &&  totaleAzioniFatto) {
 
-		Serial.println("creo azione");
+		//Serial.println("creo azione");
 		azioneFatta = false;
 		totaleAzioniFatto = false;
 
@@ -103,12 +101,12 @@ void loopModalitaMemory()
 
 
 
-				Serial.println("nuova azione: ");
-				Serial.println(azioneDaEseguire);
+				/*	Serial.println("nuova azione: ");
+					Serial.println(azioneDaEseguire);
 
-				Serial.println("Conta mosse: ");
-				Serial.println(contaMosse);
-				Serial.println();
+					Serial.println("Conta mosse: ");
+					Serial.println(contaMosse);
+					Serial.println();*/
 			}
 
 
@@ -158,13 +156,14 @@ void loopModalitaMemory()
 		timeOutAzioneMemory = timeOutAzione*contaMosse;
 		timeOutAzione -= timeOutAzione*0.1;
 		inizioAzione = millis();
-		Serial.println("inizializzo inizio Azine");
+		//Serial.println("inizializzo inizio Azine");
 
 	}
 
 
 }
 
+//resetto l'array che contiene le mosse
 void inizializzaArrayMemory(){
 	for (j = 0; j < 100; j++){
 		for (k = 0; k < 3; k++){
@@ -173,16 +172,15 @@ void inizializzaArrayMemory(){
 	}
 }
 
+//controllo se ho fatto un'azione giusta nella modalita' memory
 void  controlloAzioniModalitaMemory()
 {
-
 
 	switch (mosseModalitaMemory[posizioneAzione][0]) {
 
 		//bottoni colorati
 	case 0:
 	{
-
 			  pulsanteDaScegliere = mosseModalitaMemory[posizioneAzione][1];
 
 			  if ((pulsanteDaScegliere == 0 && (bottonePremuto2 + bottonePremuto3 + bottonePremuto4 > 0))
@@ -201,9 +199,7 @@ void  controlloAzioniModalitaMemory()
 				  || (pulsanteDaScegliere == 2 && bottonePremuto3 == 1)
 				  || (pulsanteDaScegliere == 3 && bottonePremuto4 == 1)) {
 
-				  // ++punteggioGiocatori[giocatoreCorrente];
 				  mossaGiustaColorati();
-
 
 				  posizioneAzione++;
 			  }
@@ -218,7 +214,6 @@ void  controlloAzioniModalitaMemory()
 			  }
 			  if (ventolaSoffiata()) {
 
-				  //  ++punteggioGiocatori[giocatoreCorrente];
 				  mossaGiustaSoffia();
 
 				  posizioneAzione++;
@@ -234,7 +229,6 @@ void  controlloAzioniModalitaMemory()
 			  }
 			  if (bottoneGrandePremuto()) {
 
-				  //				  ++punteggioGiocatori[giocatoreCorrente];
 				  mossaGiustaSchiaccia();
 
 				  posizioneAzione++;
@@ -250,11 +244,9 @@ void  controlloAzioniModalitaMemory()
 			  }
 			  if (scosso()) {
 
-				  //	  ++punteggioGiocatori[giocatoreCorrente];
 				  mossaGiustaScuoti();
 
 				  posizioneAzione++;
-
 			  }
 			  break;
 	}
@@ -267,7 +259,7 @@ void  controlloAzioniModalitaMemory()
 			  }
 
 			  if (bottoneManigliaPremuto()) {
-				  //	  ++punteggioGiocatori[giocatoreCorrente];
+
 				  mossaGiustaManiglia();
 
 				  posizioneAzione++;
@@ -288,20 +280,21 @@ void  controlloAzioniModalitaMemory()
 
 }
 
+//chiama mossaSbagliata(); quando scade il tempo nella modalita' memory
 void tempoScadutoMemory()
 {
 
 	if (((millis() - inizioAzione) > timeOutAzioneMemory)) {
 
-		Serial.println("tempo scaduto con   ");
-		Serial.print((millis() - inizioAzione));
+		//		Serial.println("tempo scaduto con   ");
+		//	Serial.print((millis() - inizioAzione));
 		mossaSbagliata();
 	}
 
 }
 
+//come pulsantiColorati() solo che al posto di generarne di nuovi usa quelli in memoria
 void pulsantiColoratiMemory() {
-
 
 	impostaColoreBottoni(VERDE, BLU, ROSSO, GIALLO);
 	delay(timeOutAzione / 20);
@@ -312,19 +305,14 @@ void pulsantiColoratiMemory() {
 
 	spegniLed();
 
-
 	switch (coloreDaScegliere) {
 
 	case 0:
 	{
-
 			  if (modalitaScelta != 2)
 				  playTrack(AUDIO_VERDE);
 
-
 			  switch (pulsanteDaScegliere) {
-
-
 			  case 0:
 			  {
 
@@ -350,7 +338,6 @@ void pulsantiColoratiMemory() {
 
 						break;
 			  }
-
 			  default:
 				  break;
 			  }
@@ -388,8 +375,6 @@ void pulsantiColoratiMemory() {
 
 						break;
 			  }
-
-
 			  default:
 				  break;
 			  }
@@ -425,7 +410,6 @@ void pulsantiColoratiMemory() {
 
 						break;
 			  }
-
 			  default:
 				  break;
 			  }
@@ -461,10 +445,8 @@ void pulsantiColoratiMemory() {
 			  {
 						impostaColoreBottoni(VERDE, BLU, ROSSO, GIALLO);
 
-
 						break;
 			  }
-
 			  default:
 				  break;
 

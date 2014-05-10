@@ -17,7 +17,11 @@ void inizializzaMp3Shield()
 	//Initialize the MP3 Player Shield
 	MP3player.begin();
 	//check result, see readme for error codes.
-	playTrack(AUDIO_MUSICA);
+	
+	
+
+	
+
 
 }
 

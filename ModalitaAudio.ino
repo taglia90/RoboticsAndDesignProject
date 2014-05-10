@@ -54,7 +54,7 @@ void loopModalitaAudio()
 		azioneFatta = false;
 		scegliAzione();
 		timeOutAzione -= (timeOutAzione * 0.1);
-		if (timeOutAzione < 3000)
+	/*	if (timeOutAzione < 3000)
 		{
 			MP3player.setPlaySpeed(1);
 			if (timeOutAzione < 2000)
@@ -63,7 +63,7 @@ void loopModalitaAudio()
 
 			}
 
-		}
+		}*/
 		//Serial.println("timeOutAzione= ");
 		//Serial.println(timeOutAzione);
 
@@ -76,23 +76,23 @@ void loopModalitaAudio()
 		}
 		case 1:
 		{
-				  ventola();
+				  ventolaAudio();
 				  break;
 		}
 		case 2:
 		{
-				  schiaccia();
+				  schiacciaAudio();
 				  break;
 		}
 		case 3:
 		{
-				  scuoti();
+				  scuotiAudio();
 				  break;
 		}
 
 		case 4:
 		{
-				  gira();
+				  giraAudio();
 				  break;
 		}
 

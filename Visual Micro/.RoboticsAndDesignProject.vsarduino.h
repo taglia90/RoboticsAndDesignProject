@@ -61,6 +61,10 @@ void ventola();
 void scuoti();
 void schiaccia();
 void gira();
+void ventolaAudio();
+void scuotiAudio();
+void schiacciaAudio();
+void giraAudio();
 void controlloAzioni();
 void resettaAccelerometro();
 void mossaGiustaColorati();
@@ -99,14 +103,14 @@ boolean scosso();
 
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\arduino.h"
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega\pins_arduino.h" 
-#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\RoboticsAndDesignProject.ino"
-#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\FasiIniziali.ino"
-#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\GestioneAzioni.ino"
-#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\Inizializzazioni.ino"
-#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\ModalitaAudio.ino"
-#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\ModalitaMemory.ino"
-#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\ModalitaMemoryRandom.ino"
-#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\ModalitaPassami.ino"
-#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\ModalitaSpeed.ino"
-#include "C:\Users\Marco\Documents\Arduino\RoboticsAndDesignProject\lettureInput.ino"
+#include "C:\Users\Fabio\Documents\GitHub\RoboticsAndDesignProject\RoboticsAndDesignProject.ino"
+#include "C:\Users\Fabio\Documents\GitHub\RoboticsAndDesignProject\FasiIniziali.ino"
+#include "C:\Users\Fabio\Documents\GitHub\RoboticsAndDesignProject\GestioneAzioni.ino"
+#include "C:\Users\Fabio\Documents\GitHub\RoboticsAndDesignProject\Inizializzazioni.ino"
+#include "C:\Users\Fabio\Documents\GitHub\RoboticsAndDesignProject\ModalitaAudio.ino"
+#include "C:\Users\Fabio\Documents\GitHub\RoboticsAndDesignProject\ModalitaMemory.ino"
+#include "C:\Users\Fabio\Documents\GitHub\RoboticsAndDesignProject\ModalitaMemoryRandom.ino"
+#include "C:\Users\Fabio\Documents\GitHub\RoboticsAndDesignProject\ModalitaPassami.ino"
+#include "C:\Users\Fabio\Documents\GitHub\RoboticsAndDesignProject\ModalitaSpeed.ino"
+#include "C:\Users\Fabio\Documents\GitHub\RoboticsAndDesignProject\lettureInput.ino"
 #endif

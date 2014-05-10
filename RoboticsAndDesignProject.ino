@@ -39,9 +39,14 @@ const int AUDIO_BLU = 103;
 const int AUDIO_GIALLO = 112;
 const int AUDIO_SCUOTI = 104;
 const int AUDIO_SBAAM = 105;
-const int AUDIO_SCHIACCIA = 205;
+const int AUDIO_SCHIACCIA = 105;
 const int AUDIO_GIRA = 106;
 const int AUDIO_GIUSTO = 107;
+const int AUDIO_GIUSTO_TIRA = 135;
+const int AUDIO_GIUSTO_SOFFIA = 136;
+const int AUDIO_GIUSTO_SCUOTI = 137;
+const int AUDIO_GIUSTO_SCHIACCIA = 138;
+const int AUDIO_GIUSTO_COLORATO = 139;
 const int AUDIO_SBAGLIATO = 108;
 const int AUDIO_MUSICA = 109;
 const int AUDIO_START = 110;
@@ -58,7 +63,18 @@ const int AUDIO_PASSAMI_AL_GIALLO = 121;
 const int AUDIO_PASSAMI_AL_ROSSO = 122;
 const int AUDIO_PASSAMI_AL_VERDE = 123;
 const int AUDIO_SPAREGGIO = 124;		//manca
-const int AUDIO_VINCE = 125;			//manca
+const int AUDIO_VINCE_BLU = 125;			//manca
+const int AUDIO_VINCE_GIALLO = 126;
+const int AUDIO_VINCE_VERDE = 127;
+const int AUDIO_VINCE_ROSSO = 128;
+const int AUDIO_IMPEGNATI_DI_PIU = 129;
+const int AUDIO_PUOI_FARE_DI_MEGLIO = 130;
+const int AUDIO_NIENTE_MALE = 131;
+const int AUDIO_BENE = 132;
+const int AUDIO_BRAVISSIMO = 133;
+const int AUDIO_FANTASTICO = 134;
+
+int modificatoreVelocita=0;
 
 //led rgb 1
 const int LED_ROSSO_1 = 24;
@@ -118,6 +134,7 @@ const int PIN_VENTOLA_IN = A12;
 const int PIN_VIBRAZIONE = A11;
 int intensitaVentola;
 int limiteVelocitaVentola = 4;
+
 
 //bottoni premuti
 int bottonePremuto1;
@@ -200,7 +217,21 @@ void setup() {
 	inizializzaMp3Shield();
 	inizializzaAccelerometro();
 
-	delay(2000);
+	delay(5000);
+	//playTrack(109);
+	randomSeed(analogRead(A14));
+	int audioStart = random(4);
+	Serial.println(audioStart);
+	switch (audioStart){
+	case 0:	playTrack(109); break;
+	case 1:	playTrack(209); break;
+	case 2:	playTrack(309); break;
+	case 3:	playTrack(409); break;
+	default: break;
+	}
+	//Serial.println(AUDIO_MUSICA + random(4) * 100);
+	delay(3000);
+	//playTrack(209);
 	//mi metto in attesa che i giocatori schiaccino i tasti colorati
 	avviaSceltaGiocatori();
 
@@ -303,11 +334,11 @@ void spegniLed() {
 
 //funzione che viene invocata quando finisce una partita
 void resettaPartita() {
-
+	modificatoreVelocita = 0;
 	//Serial.println("resetto la partita.................");
 	MP3player.setPlaySpeed(0);
 	primaMossa = true;
-	playTrack(AUDIO_MUSICA);
+	
 	accendiLedPunteggio();
 	spegniLedPunteggio();
 	delay(attesaNuovaPartita);
@@ -318,7 +349,7 @@ void resettaPartita() {
 
 //funzione che viene invocata quando un giocatore finisce il suo turno nella modalita' multiplayer
 void resettaPartitaMultiplayer() {
-
+	modificatoreVelocita = 0;
 	//Serial.println("resetto la partita multiplayer.................");
 	MP3player.setPlaySpeed(0);
 	primaMossa = true;
@@ -335,6 +366,10 @@ void resettaPartitaMultiplayer() {
 //funzione che accende i 6 led del punteggio
 void accendiLedPunteggio()
 {
+	modificatoreVelocita = 0;
+	//Serial.println("punteggio ");
+	//Serial.println()
+
 	if (modalitaScelta == 3)
 	{
 		mosseGiuste = contaMosse;
@@ -343,35 +378,81 @@ void accendiLedPunteggio()
 	Serial.println("mosse giuste = ");
 	Serial.println(mosseGiuste);
 
-	for (i = 0; i<2; i++)
+	if (mosseGiuste < 4)
 	{
-		if (mosseGiuste>((i + 1) * 3))
+		playTrack(AUDIO_IMPEGNATI_DI_PIU);
+
+	}
+	else{
+		if (mosseGiuste < 7)
 		{
-			digitalWrite(LED_PUNTEGGIO[i], LOW);
-			delay(1000);
+			playTrack(AUDIO_PUOI_FARE_DI_MEGLIO);
+		}
+		else{
+			if (mosseGiuste < 10)
+			{
+				playTrack(AUDIO_NIENTE_MALE);
+
+			}
+			else{
+				if (mosseGiuste < 13)
+				{
+					playTrack(AUDIO_BENE);
+				}
+				else{
+					if (mosseGiuste < 16)
+					{
+						playTrack(AUDIO_BRAVISSIMO);
+					}
+
+					else{
+						playTrack(AUDIO_FANTASTICO);
+					}
+				}
+			}
 		}
 	}
 
-	for (i = 3; i<6; i++)
+
+	for (i = 0; i<6; i++)
 	{
 		if (mosseGiuste>((i + 1) * 3))
 		{
+			Serial.println("accendo led    ");
+			Serial.print(i);
+			Serial.println("");
 			digitalWrite(LED_PUNTEGGIO[i], HIGH);
 			delay(1000);
 		}
 	}
+	/*
+	for (; i<6; i++)
+	{
+		if (mosseGiuste>((i + 1) * 3))
+		{
+			Serial.println("accendo led    ");
+			Serial.print(i);
+			Serial.println("");
+			digitalWrite(LED_PUNTEGGIO[i], HIGH);
+			delay(1000);
+		}
+	}*/
+	spegniLedPunteggio();
 }
 
 //funzione che spegne i 6 led del punteggio
 void spegniLedPunteggio()
-{
+{/*
 	for (i = 0; i < 2; i++)
 	{
+		Serial.println("spengo led  rosso  ");
 		digitalWrite(LED_PUNTEGGIO[i], HIGH);
 
 	}
-	for (i = 3; i < 6; i++)
+	*/
+	for (i=0; i < 6; i++)
 	{
+		Serial.println("spengo led    ");
 		digitalWrite(LED_PUNTEGGIO[i], LOW);
 
 	}
@@ -448,40 +529,40 @@ void controlloCondizioniVittoriaESpareggio(){
 		if (modalitaScelta == 5){
 			giocatoriInPartita--;
 		}
-		playTrack(AUDIO_VINCE);
+		playTrack(AUDIO_VINCE_VERDE);
 		delay(3000);
-		playTrack(AUDIO_VERDE);
-		delay(2000);
+		//playTrack(AUDIO_VERDE);
+		//delay(2000);
 	}
 	else if (punteggioGiocatori[1] > punteggioGiocatori[0] && punteggioGiocatori[1] > punteggioGiocatori[2] && punteggioGiocatori[1] > punteggioGiocatori[3]){
 		inPartitaMultiplayer = false;
 		if (modalitaScelta == 5){
 			giocatoriInPartita--;
 		}
-		playTrack(AUDIO_VINCE);
+		playTrack(AUDIO_VINCE_BLU);
 		delay(3000);
-		playTrack(AUDIO_BLU);
-		delay(2000);
+		//playTrack(AUDIO_BLU);
+		//delay(2000);
 	}
 	else if (punteggioGiocatori[2] > punteggioGiocatori[0] && punteggioGiocatori[2] > punteggioGiocatori[1] && punteggioGiocatori[2] > punteggioGiocatori[3]){
 		inPartitaMultiplayer = false;
 		if (modalitaScelta == 5){
 			giocatoriInPartita--;
 		}
-		playTrack(AUDIO_VINCE);
+		playTrack(AUDIO_VINCE_GIALLO);
 		delay(3000);
-		playTrack(AUDIO_GIALLO);
-		delay(2000);
+		//playTrack(AUDIO_GIALLO);
+		//delay(2000);
 	}
 	else if (punteggioGiocatori[3] > punteggioGiocatori[0] && punteggioGiocatori[3] > punteggioGiocatori[1] && punteggioGiocatori[3] > punteggioGiocatori[2]){
 		inPartitaMultiplayer = false;
 		if (modalitaScelta == 5){
 			giocatoriInPartita--;
 		}
-		playTrack(AUDIO_VINCE);
+		playTrack(AUDIO_VINCE_ROSSO);
 		delay(3000);
-		playTrack(AUDIO_ROSSO);
-		delay(2000);
+		//playTrack(AUDIO_ROSSO);
+		//delay(2000);
 	}
 	else{//altrimenti spareggio
 		playTrack(AUDIO_SPAREGGIO);

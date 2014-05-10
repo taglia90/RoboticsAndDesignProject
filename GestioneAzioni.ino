@@ -21,7 +21,7 @@ void pulsantiColorati() {
 	case 0:
 	{
 			  if (modalitaScelta != 2)
-				  playTrack(AUDIO_VERDE);
+				  playTrack(AUDIO_VERDE + modificatoreVelocita);
 
 			  switch (pulsanteDaScegliere) {
 			  case 0:
@@ -59,7 +59,7 @@ void pulsantiColorati() {
 	{
 
 			  if (modalitaScelta != 2)
-				  playTrack(AUDIO_BLU);
+				  playTrack(AUDIO_BLU + modificatoreVelocita);
 
 			  switch (pulsanteDaScegliere) {
 			  case 0:
@@ -94,7 +94,7 @@ void pulsantiColorati() {
 	case 2:
 	{
 			  if (modalitaScelta != 2)
-				  playTrack(AUDIO_ROSSO);
+				  playTrack(AUDIO_ROSSO + modificatoreVelocita);
 
 			  switch (pulsanteDaScegliere) {
 			  case 0:
@@ -131,7 +131,7 @@ void pulsantiColorati() {
 	case 3:
 	{
 			  if (modalitaScelta != 2)
-				  playTrack(AUDIO_GIALLO);
+				  playTrack(AUDIO_GIALLO + modificatoreVelocita);
 
 			  switch (pulsanteDaScegliere) {
 			  case 0:
@@ -266,24 +266,47 @@ void impostaColoreBottoni(int ledColore1, int ledColore2, int ledColore3, int le
 
 
 void ventola() {
-	playTrack(AUDIO_SOFFIA);
+	playTrack(AUDIO_SOFFIA + modificatoreVelocita);
 }
 
 void scuoti() {
-	playTrack(AUDIO_SCUOTI);
+	playTrack(AUDIO_SCUOTI + modificatoreVelocita);
 }
 
 void schiaccia() {
 
 	digitalWrite(LED_BLU_GRANDE_1, LOW);
 
-	playTrack(AUDIO_SCHIACCIA);
+	playTrack(AUDIO_SCHIACCIA + modificatoreVelocita);
 }
 
 void gira(){
 	digitalWrite(LED_BLU_MANIGLIA, LOW);
 
-	playTrack(AUDIO_GIRA);
+	playTrack(AUDIO_GIRA + modificatoreVelocita);
+
+}
+
+
+void ventolaAudio() {
+	playTrack(AUDIO_GIUSTO_SOFFIA);
+}
+
+void scuotiAudio() {
+	playTrack(AUDIO_GIUSTO_SCUOTI);
+}
+
+void schiacciaAudio() {
+
+	digitalWrite(LED_BLU_GRANDE_1, LOW);
+
+	playTrack(AUDIO_GIUSTO_SCHIACCIA);
+}
+
+void giraAudio(){
+	digitalWrite(LED_BLU_MANIGLIA, LOW);
+
+	playTrack(AUDIO_GIUSTO_TIRA);
 
 }
 
@@ -390,7 +413,7 @@ void resettaAccelerometro() {
 //funzione che illumina i led quando faccio la mossa giusta relativa
 void mossaGiustaColorati() {
 
-	playTrack(AUDIO_GIUSTO);
+	playTrack(AUDIO_GIUSTO_COLORATO);
 	spegniLed();
 	int ledDaIlluminare;
 	switch (pulsanteDaScegliere) {
@@ -441,7 +464,7 @@ void mossaGiustaColorati() {
 
 //funzione che viene invocata quando scuoto correttamente
 void mossaGiustaScuoti() {
-	playTrack(AUDIO_GIUSTO);
+	playTrack(AUDIO_GIUSTO_SCUOTI);
 	spegniLed();
 	delay(attesaNuovaAzione / 3);
 	resettaAccelerometro();
@@ -455,7 +478,7 @@ void mossaGiustaScuoti() {
 //funzione che viene invocata quando tiro correttamente la maniglia
 void mossaGiustaManiglia() {
 
-	playTrack(AUDIO_GIUSTO);
+	playTrack(AUDIO_GIUSTO_TIRA);
 	spegniLed();
 
 	digitalWrite(LED_VERDE_MANIGLIA, LOW);
@@ -478,7 +501,7 @@ void mossaGiustaManiglia() {
 
 //funzione che viene invocata quando soffio correttamente
 void mossaGiustaSoffia() {
-	playTrack(AUDIO_GIUSTO);
+	playTrack(AUDIO_GIUSTO_SOFFIA);
 	spegniLed();
 	analogWrite(PIN_VENTOLA_OUT, 255);
 	delay(attesaNuovaAzione / 3);
@@ -493,7 +516,7 @@ void mossaGiustaSoffia() {
 
 //funzione che viene invocata quando schiaccio correttamente il pulsantone
 void mossaGiustaSchiaccia() {
-	playTrack(AUDIO_SBAAM);
+	playTrack(AUDIO_GIUSTO_SCHIACCIA);
 	spegniLed();
 	digitalWrite(LED_VERDE_GRANDE_1, LOW);
 	delay(attesaNuovaAzione / 10);

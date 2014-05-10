@@ -13,37 +13,37 @@ void loopModalitaPassami()
 
 		//annuncio il giocatore vincitore:
 		if (coloreGiocatori[0] != 0){
-			playTrack(AUDIO_VINCE);
+			playTrack(AUDIO_VINCE_VERDE);
 			delay(3000);
-			playTrack(AUDIO_VERDE);
-			delay(2000);
+			//playTrack(AUDIO_VERDE);
+			//delay(2000);
 			coloreGiocatori[0] = 0;
 			giocatoriInPartita--;
 		}
 		else if (
 			coloreGiocatori[1] != 0){
-			playTrack(AUDIO_VINCE);
+			playTrack(AUDIO_VINCE_BLU);
 			delay(3000);
-			playTrack(AUDIO_BLU);
-			delay(2000);
+		//	playTrack(AUDIO_BLU);
+			//delay(2000);
 
 			coloreGiocatori[1] = 0;
 			giocatoriInPartita--;
 		}
 		else if (coloreGiocatori[2] != 0){
-			playTrack(AUDIO_VINCE);
+			playTrack(AUDIO_VINCE_GIALLO);
 			delay(3000);
-			playTrack(AUDIO_GIALLO);
-			delay(2000);
+			//playTrack(AUDIO_GIALLO);
+			//delay(2000);
 
 			coloreGiocatori[2] = 0;
 			giocatoriInPartita--;
 		}
 		else if (coloreGiocatori[3] != 0){
-			playTrack(AUDIO_VINCE);
+			playTrack(AUDIO_VINCE_ROSSO);
 			delay(3000);
-			playTrack(AUDIO_ROSSO);
-			delay(2000);
+			//playTrack(AUDIO_ROSSO);
+			//delay(2000);
 
 			coloreGiocatori[3] = 0;
 			giocatoriInPartita--;

@@ -54,7 +54,7 @@ void loopModalitaSpeed()
 		azioneFatta = false;
 		scegliAzione();
 		timeOutAzione -= (timeOutAzione * 0.1);
-		if (timeOutAzione < 3000)
+	/*	if (timeOutAzione < 3000)
 		{
 			MP3player.setPlaySpeed(1);
 			if (timeOutAzione < 2000)
@@ -62,6 +62,11 @@ void loopModalitaSpeed()
 				MP3player.setPlaySpeed(2);
 			}
 
+		}*/
+		if (modificatoreVelocita < 6)
+		{
+
+			modificatoreVelocita = (int)(mosseGiuste / 3) * 100;
 		}
 		//Serial.println("timeOutAzione= ");
 		//Serial.println(timeOutAzione);
